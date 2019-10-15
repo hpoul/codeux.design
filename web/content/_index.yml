@@ -1,0 +1,8 @@
+name: 'Starter Site for dc2f'
+config:
+  url:
+    protocol: 'https'
+    host: 'starter.dc2f.com'
+  favicons: []
+mainMenu: []
+footerMenu: []
