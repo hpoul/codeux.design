@@ -13,6 +13,7 @@ abstract class HerbyIntro : LandingPageElement() {
     abstract val introImage: ImageAsset
 }
 
+
 @Nestable("portfolio")
 abstract class PortfolioElement : LandingPageElement() {
     abstract val screenshot: ImageAsset

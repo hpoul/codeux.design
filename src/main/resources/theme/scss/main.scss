@@ -19,7 +19,7 @@ $secondary: $color-orange;
 @import "fonts";
 @import "landing_clients";
 @import "landing_portfolio";
-
+@import "blog";
 
 
 
@@ -125,41 +125,41 @@ a {
     padding: 8px 32px;
   }
 }
-
-.container {
-  @include grid-row(1024px);
-
-  .hero-column {
-    @include grid-col(4/12);
-    text-align: center;
-    img {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    h2 {
-      font-size: modular-scale(2);
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-    p {
-      font-size: modular-scale(2);
-      color: #353535;
-      line-height: 1.2;
-    }
-
-    &.code h2 {
-      color: #E29B4A;
-    }
-    &.ux h2 {
-      color: $color-ux;
-    }
-    &.personal h2 {
-      color: #7B7B7B;
-    }
-  }
-}
+//
+//.container {
+//  @include grid-row(1024px);
+//
+//  .hero-column {
+//    @include grid-col(4/12);
+//    text-align: center;
+//    img {
+//      display: block;
+//      margin-left: auto;
+//      margin-right: auto;
+//    }
+//
+//    h2 {
+//      font-size: modular-scale(2);
+//      font-weight: bold;
+//      text-transform: uppercase;
+//    }
+//    p {
+//      font-size: modular-scale(2);
+//      color: #353535;
+//      line-height: 1.2;
+//    }
+//
+//    &.code h2 {
+//      color: #E29B4A;
+//    }
+//    &.ux h2 {
+//      color: $color-ux;
+//    }
+//    &.personal h2 {
+//      color: #7B7B7B;
+//    }
+//  }
+//}
 
 .codeux-logo-graphic {
   margin-top: modular-scale(5);

@@ -1,7 +1,20 @@
 @import "deps";
 
-body {
-  padding-top: mydip(64);
+.landingpage-social {
+  padding-left: mydip(16);
+
+  a {
+    display: inline-block;
+    width: mydip(30);
+    height: mydip(30);
+    padding-top: mydip(10);
+    padding-bottom: mydip(16);
+    margin-right: mydip(16);
+
+    &:hover {
+      filter: brightness(0.5);
+    }
+  }
 }
 
 nav {
@@ -15,24 +28,6 @@ nav {
 
   .row {
     @include grid-row(1024px);
-  }
-
-  .social {
-    @include grid-col(4/12);
-    padding-left: mydip(16);
-
-    a {
-      display: inline-block;
-      width: mydip(30);
-      height: mydip(30);
-      padding-top: mydip(16);
-      padding-bottom: mydip(16);
-      margin-right: mydip(16);
-
-      &:hover {
-        filter: brightness(0.5);
-      }
-    }
   }
 
   .page-sections {

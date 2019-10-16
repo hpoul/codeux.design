@@ -1,0 +1,42 @@
+.hero.has-bg-img {
+  margin-bottom: 2em;
+  position: relative;
+  overflow: hidden;
+
+  .bg-image {
+    background-position: center;
+    background-size:cover;
+    overflow: hidden;
+    //background: #000;
+    //background: darken($primary, 30%);
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    filter: blur(3px);
+    margin: -3px;
+    //transform: translateZ(-1px) scale(1.5);
+    background-attachment: fixed;
+
+    &::before {
+      content: ' ';
+      opacity: 0.5;
+      background: darken($primary, 30%);
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .hero-body {
+    z-index: 10;
+  }
+
+  .title, .subtitle {
+    color: #fefefe;
+  }
+}

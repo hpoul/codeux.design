@@ -1,10 +1,17 @@
-name: 'Starter Site for dc2f'
+name: 'CodeUX.design e.U. - Herbert Poul'
 config:
   url:
     protocol: 'https'
     host: 'starter.dc2f.com'
-  favicons: []
-mainMenu: []
+  favicons:
+    - image: 'favicon.ico'
+    - image: 'favicon-16x16.png'
+    - image: 'favicon-32x32.png'
+mainMenu:
+  - name: 'Home'
+    ref: /
+  - name: 'Blog'
+    ref: /articles
 footerContent: /partials/footer
 footerMenu:
   - name: 'Index'
