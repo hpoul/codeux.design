@@ -1,2 +1,3 @@
 _tools/secrets/_purgecache_secrets.sh
 _tools/secrets/github-pages-deploy-key_id_rsa
+_tools/secrets/github-pages-deploy-key_id_rsa.pub
