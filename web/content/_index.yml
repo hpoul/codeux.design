@@ -2,7 +2,7 @@ name: 'CodeUX.design e.U. - Herbert Poul'
 config:
   url:
     protocol: 'https'
-    host: 'starter.dc2f.com'
+    host: 'codeux.design'
   favicons:
     - image: 'favicon.ico'
     - image: 'favicon-16x16.png'
