@@ -1,0 +1,19 @@
+screenshot: 'sobotta-ipad.png'
+title: 'Sobotta Anatomie Atlas'
+subTitle: 'Elsevier GmbH'
+intro: |
+  The Sobotta Anatomy app is an anatomically-detailed app with over
+  25,000 precisely placed pins covering the complete human body;
+  General Anatomy and Musculoskeletal System, Internal Organs, Head,
+  Neck and Neuroanatomy.
+
+codeTags: ['iPad', 'iPhone', 'Android']
+code: |
+  Development in Objective C for iOS with local Storage,
+  in app purchases, social sign in with a feature equivalent app in Android
+  with Java.
+
+uxTags: ['Mockups', 'Prototype']
+ux: |
+  Mockups and fast Prototyping for new Training system
+  based on Spaced Repetition Learning.

@@ -1,0 +1,2 @@
+web/static/images/sunset-wave.jpg filter=lfs diff=lfs merge=lfs -text
+web/static/images/sunset-wave-scaled.jpg filter=lfs diff=lfs merge=lfs -text

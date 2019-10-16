@@ -1,6 +1,169 @@
-$primary: #626BC6;
-$secondary: #97c965;
-@import 'node_modules/bulma/sass/utilities/initial-variables';
-@import 'node_modules/bulma/bulma';
+@import "variables";
 
 
+$primary: $color-green;
+$secondary: $color-orange;
+
+@import '~bulma/sass/utilities/initial-variables';
+
+//$navbar-background-color: $primary;
+
+@import '~bulma/bulma';
+
+
+
+
+@import "utils";
+@import "nav";
+@import "footer";
+@import "fonts";
+@import "landing_clients";
+@import "landing_portfolio";
+
+
+
+
+
+body {
+  font-family: Rubik, sans-serif;
+  color: #666;
+}
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: $color-green;
+}
+
+
+
+
+
+
+
+
+.herby-info, .competence-field, .competence-footer {
+
+
+  @include grid-row(760px);
+  align-items: center;
+
+  margin-top: mydip(64);
+  //margin-bottom: modular-scale(4);
+
+  .info-column {
+    @include grid-col(9/12);
+    text-align: right;
+    font-size: 24px;
+    padding-right: mydip(16);
+  }
+  .avatar-column {
+    @include grid-col(3/12);
+  }
+
+  h1 {
+    font-size: 52px;
+    font-weight: 300;
+  }
+  .signature {
+    margin-top: mydip(8);
+    font-size: 26px;
+    font-family: 'Pacifico', sans-serif;
+    color: #101061;
+  }
+  .avatar-herbert-image {
+    background-image: url('#{$imageBaseDir}/avatar/herbert_profile_picture_800.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    width: mydip(124);
+    height: mydip(124);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.50), 0 1px 2px 0 rgba(0,0,0,0.50);
+  }
+
+  h2 {
+    text-transform: uppercase;
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: bold;
+  }
+
+  .code, .ux {
+    padding-top: mydip(40);
+  }
+
+  &.code strong, &.code h2 {
+    color: $color-orange;
+  }
+  &.ux strong, &.ux h2 {
+    color: $color-green;
+  }
+
+}
+
+
+.competence-footer {
+  margin-top: 0;
+
+  h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: mydip(40);
+    margin-bottom: mydip(8);
+  }
+
+  .cta {
+    /* button bg: */
+    background: #97C965;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 2px;
+    /* MAKE MY PROJECT SUCC: */
+    font-size: 19px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    padding: 8px 32px;
+  }
+}
+
+.container {
+  @include grid-row(1024px);
+
+  .hero-column {
+    @include grid-col(4/12);
+    text-align: center;
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h2 {
+      font-size: modular-scale(2);
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    p {
+      font-size: modular-scale(2);
+      color: #353535;
+      line-height: 1.2;
+    }
+
+    &.code h2 {
+      color: #E29B4A;
+    }
+    &.ux h2 {
+      color: $color-ux;
+    }
+    &.personal h2 {
+      color: #7B7B7B;
+    }
+  }
+}
+
+.codeux-logo-graphic {
+  margin-top: modular-scale(5);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

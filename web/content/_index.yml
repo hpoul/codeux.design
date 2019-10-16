@@ -5,4 +5,15 @@ config:
     host: 'starter.dc2f.com'
   favicons: []
 mainMenu: []
-footerMenu: []
+footerContent: /partials/footer
+footerMenu:
+  - name: 'Index'
+    children:
+    - name: 'Home'
+      ref: '/'
+embed:
+  figures:
+    avatarCode:
+      image: code.svg
+    avatarUx:
+      image: ux.svg

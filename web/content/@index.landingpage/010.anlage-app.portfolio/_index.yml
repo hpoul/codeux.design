@@ -1,0 +1,14 @@
+screenshot: 'mac-analyse-performance.png'
+title: 'Anlage.App'
+subTitle: 'Stock Portfolio tracker for Retail Investors'
+link: https://anlage.app/
+intro: |
+  Stock portfolio tracker with an emphasis on long term retail investors. Allows users to import their stock portfolio from their stock broker and get detailed statistics about their stocks.
+
+  <https://anlage.app/>
+
+codeTags: ['Web', 'Mobile', 'Backend', 'PostgreSQL', 'MongoDB']
+code: 'Full Stack development with Kotlin/Java backend and Angular frontend.'
+
+uxTags: ['Mockups', 'Prototype']
+ux: 'Mockups and rapid Prototyping for the complete app experience.'

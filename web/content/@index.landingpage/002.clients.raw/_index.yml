@@ -1,0 +1,23 @@
+embed:
+  figures:
+    signature:
+      image: 'signature.png'
+    austrianapps:
+      image: 'austrianapps.png'
+      inlineImage: true
+    bueroservice:
+      image: 'bueroservice.png'
+      inlineImage: true
+    elsevier:
+      image: 'elsevier.png'
+      inlineImage: true
+    oeamtc:
+      image: 'oeamtc.png'
+      inlineImage: true
+    tapoIt:
+      image: 'tapo-it.png'
+      inlineImage: true
+    telekom:
+      image: 'telekom.png'
+      inlineImage: true
+

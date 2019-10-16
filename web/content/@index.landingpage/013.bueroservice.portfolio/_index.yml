@@ -1,0 +1,20 @@
+screenshot: 'bueroservice-nexus-iphone-composition.png'
+title: 'Büroservice'
+subTitle: 'Benefit Büroservice GmbH'
+intro: |
+  Using this app you can easily forward incoming calls to your personal
+  assistant who will take your call in the name of your company. They
+  will respond the way as you have configured in the app. Responses
+  could include out of office, meetings, holidays, etc. You will later
+  be notified by your assistant about missed calls.
+
+codeTags: ['iPhone', 'Android']
+code: |
+  Native iOS and Android development in Swift and Java. Heavy integration with
+  native APIs to enable call redirection, creating address book entries and
+  communicating with the server component.
+
+uxTags: ['Mockups', 'Prototype']
+ux: |
+  Created all Mockups and Click-through prototype for the Android
+  and iOS version prior to development.

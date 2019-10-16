@@ -7,4 +7,8 @@
  * in the user manual at https://docs.gradle.org/5.6.2/userguide/multi_project_builds.html
  */
 
-rootProject.name = "dc2f-starter-site"
+rootProject.name = "codeux-design"
+
+includeBuild("../dc2f/dc2f.kt")
+includeBuild("../dc2f/dc2f-common")
+includeBuild("../dc2f/dc2f-edit-api")

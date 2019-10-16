@@ -1,0 +1,65 @@
+
+<div class="competence-field code">
+    <div class="info-column">
+        I am a full stack <strong>mobile and web developer</strong> with experience developing iOS and Android applications as well as web apps.
+    </div>
+    <div class="avatar-column">
+        <img src="{{ render(content=rootNode.embed.figures.avatarCode.image.hrefRenderable) }}" width="84" height="83" />
+        <h2>Code &amp;<br /> Development</h2>
+    </div>
+</div>
+
+<div class="competence-field ux">
+    <div class="info-column">
+        With a passion for <strong>UX, UI and Product Design</strong>. Proficient in design tools, interactive Prototyping and iterative product development.
+    </div>
+    <div class="avatar-column">
+        <img src="{{ render(content=rootNode.embed.figures.avatarUx.image.hrefRenderable) }}" width="84" height="83" />
+        <h2>User<br /> Experience</h2>
+    </div>
+</div>
+
+<div class="competence-footer">
+    <div class="info-column">
+        <p><img src="{{ render(content=node.embed.figures.signature.image.hrefRenderable) }}" width="176" height="53" /></p>
+        <h3>So what about you?</h3>
+        <a href="mailto:herbert@codeux.design" class="cta">Make my project successful</a>
+    </div>
+</div>
+
+<!--
+            <div class="hero-column code">
+            <img src="images/avatar/code.svg" width="84" height="83" />
+            <h2>Code</h2>
+            <p>Full Stack developer for iOS, Android and Web Applications.</p>
+        </div>
+        <div class="hero-column ux">
+            <img src="images/avatar/ux.svg" width="84" height="83" />
+            <h2>User Experience</h2>
+            <p>Simplified User Experience, Research, Iterative Design.</p>
+        </div>
+        <div class="hero-column personal">
+            <img src="images/avatar/personal.svg" width="84" height="83"/>
+            <h2>Personal</h2>
+            <p>Sports, Photography, Travel</p>
+        </div>
+    </div>
+</div>
+</div>
+-->
+</div>
+
+<div class="landing-clients">
+    <div>
+        <h4>Clients and Partners</h4>
+    </div>
+    <div class="landing-clients-list">
+        <a href="http://t-mobile.at/" target="_blank">{{ render(content=node.embed.figures.telekom) }}</a>
+        <a href="https://www.benefit-bueroservice.at/" target="_blank">{{ render(content=node.embed.figures.bueroservice) }}</a>
+        <a href="http://tapo-it.at/" target="_blank">{{ render(content=node.embed.figures.tapoIt) }}</a>
+        <a href="http://www.oeamtc.at/" target="_blank">{{ render(content=node.embed.figures.oeamtc) }}</a>
+        <a href="https://www.elsevier.de/" target="_blank">{{ render(content=node.embed.figures.elsevier) }}</a>
+        <a href="https://www.austrianapps.com/" target="_blank">{{ render(content=node.embed.figures.austrianapps) }}</a>
+    </div>
+</div>
+

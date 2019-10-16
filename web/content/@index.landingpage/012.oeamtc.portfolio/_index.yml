@@ -1,0 +1,17 @@
+screenshot: 'oeamtc-mockup.png'
+title: 'ÖAMTC Driving Test'
+subTitle: 'Österreichischer Automobil-, Motorrad- und Touringclub'
+intro: |
+  With the new ÖAMTC app, you can simulate the driving licence test for
+  the basic knowledge module and modules A and B, or complete a
+  training session.
+
+codeTags: ['iPad', 'iPhone', 'Android', 'Web', 'Desktop']
+code: |
+  Cross Platform development with HTML5 and JavaScript.
+  Embedded in native iOS and Android Apps developed in Objective C and Java.
+
+uxTags: ['Mockups', 'Prototype']
+ux: |
+  Mockups and fast Prototyping for new Training system based on
+  Spaced Repetition Learning.

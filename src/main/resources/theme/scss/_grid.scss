@@ -1,0 +1,29 @@
+// https://codepen.io/dalton/pen/WQrNWj
+
+//You can declare these when you call the mixin, but it's nice to have a default.
+
+$row-width: 100%;
+
+//Unitless, will be converted to %
+$gutter-width:1;
+
+//Border-box all the things.
+*, *:before, *:after { box-sizing: border-box; }
+
+//These are the two mixins that do the work:
+@mixin grid-row ($max-row-width: $row-width, $center: false ) {
+  margin: 0 auto;
+  max-width: $max-row-width;
+  display: flex;
+  flex-wrap: wrap;
+  @if $center == true {
+    justify-content: center;
+  } @else {
+    justify-content: space-between;
+  }
+}
+
+@mixin grid-col ($width:1, $gutter: $gutter-width) {
+  $percentage: percentage($width);
+  width: $percentage - ($gutter - $width * $gutter);
+}

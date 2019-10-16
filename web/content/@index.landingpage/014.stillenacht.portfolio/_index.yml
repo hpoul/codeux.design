@@ -1,0 +1,17 @@
+screenshot: 'tmobile-silentnight-nexus.png'
+title: 'Stille Nacht'
+subTitle: 'T-Mobile Austria'
+intro: |
+  Have a silent night, for every minute your smartphone is switched
+  into silent mode, T-Mobile Austria is donating 1 Cent to a charity.
+
+codeTags: ['iPhone', 'Android']
+code: |
+  Cross platform development with HTML, SASS (CSS) with native wrappers for
+  push notifications and silent mode detection in Objective C for
+  iPhone and Java for Android.
+
+uxTags: ['Prototype']
+ux: |
+  Quick iterative prototyping to evaluating feasibility as well
+  as platform possibilities.

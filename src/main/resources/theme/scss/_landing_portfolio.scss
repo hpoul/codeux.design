@@ -1,0 +1,80 @@
+@import "deps";
+
+.portfolio-project {
+  //@include row;
+  @include grid-row(1024px);
+
+  .portfolio-project-mockup {
+    @include grid-col(1/2, 0);
+    background-color: $color-green-lighter;
+
+    text-align: center;
+    padding-top: 64px;
+    padding-bottom: 64px;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  &.even .portfolio-project-mockup {
+    background-color: $color-orange-lighter;
+  }
+
+  .portfolio-project-info {
+    @include grid-col(1/2, 0);
+
+    background-color: #FCFCFC;
+
+    padding: mydip(64);
+
+    h2 {
+      font-weight: normal;
+      color: #353535;
+      font-size: 32px;
+      line-height: 38px;
+    }
+
+    h3 {
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 17px;
+    }
+
+    > p {
+      margin-top: mydip(24);
+      font-size: 14px;
+      line-height: 17px;
+    }
+
+    .info-tags {
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .portfolio-project-info-code, .portfolio-project-info-ux {
+      background-position: center left;
+      background-repeat: no-repeat;
+      background-size: mydip(60) mydip(60);
+      min-height: mydip(60);
+      padding-left: mydip(60 + 32);
+      margin-top: mydip(40);
+    }
+
+    .portfolio-project-info-code {
+      background-image: url('#{$imageBaseDir}/avatar/code.svg');
+
+      .info-tags {
+        color: $color-green;
+      }
+    }
+
+    .portfolio-project-info-ux {
+      background-image: url('#{$imageBaseDir}/avatar/ux.svg');
+
+      .info-tags {
+        color: $color-orange;
+      }
+    }
+  }
+}
