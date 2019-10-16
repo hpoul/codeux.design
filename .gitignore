@@ -31,3 +31,6 @@
 /.blackbox/pubring.gpg~
 /.blackbox/pubring.kbx~
 /.blackbox/secring.gpg
+
+/public
+/_tools/secrets/_purgecache_secrets.sh
