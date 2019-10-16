@@ -5,6 +5,7 @@
 # > git checkout --orphan gh-pages
 # > git rm -rf .
 # > touch README.md && git add README.md && git commit -m 'Initial gh-pages commit.'
+# > git push -u origin HEAD
 #
 # create deploy key for github:
 # > ssh-keygen -f github-pages-deploy-key_id_rsa
@@ -20,7 +21,7 @@ rsa="_tools/secrets/github-pages-deploy-key_id_rsa"
 pushd "${repodir}"
 
 
-REPO_SLUG=${TRAVIS_REPO_SLUG:-authpass/authpass.app-website.git}
+REPO_SLUG=${TRAVIS_REPO_SLUG:-hpoul/codeux.design.git}
 BUILD_NUMBER=${TRAVIS_BUILD_NUMBER:-manual}
 BUILD_WEB_URL=${TRAVIS_BUILD_WEB_URL:-}
 

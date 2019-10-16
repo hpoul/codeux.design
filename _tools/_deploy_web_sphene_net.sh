@@ -20,7 +20,7 @@ if ! test -d "$srcdir" ; then
   exit 1
 fi
 
-rsync -e "ssh -i $dir/secrets/id_rsa.web.sphene.net -p 22031" --progress -a --delete "$srcdir/" herbert@web.sphene.net:public_html/authpass/
+rsync -e "ssh -i $dir/secrets/id_rsa.web.sphene.net -p 22031" --progress -a --delete "$srcdir/" herbert@web.sphene.net:public_html/new.codeux.design.vhost/
 
-echo "Synced to https://authpass.app/"
+echo "Synced to https://codeux.design/"
 
