@@ -1,4 +1,4 @@
-<div class="landingpage-social">
+<div class="landingpage-social navbar-item">
     <a href="https://twitter.com/HerbertPoul" target="_blank"><img src="{{ render(content=node.embed.figures.twtr.image.hrefRenderable)}}" width="30" height="26" /></a>
     <a href="https://github.com/hpoul" target="_blank"><img src="{{ render(content=node.embed.figures.gh.image.hrefRenderable)}}" width="28" height="28" /></a>
     <a href="https://www.facebook.com/hpoul" target="_blank"><img src="{{ render(content=node.embed.figures.fb.image.hrefRenderable)}}" width="16" height="30" /></a>

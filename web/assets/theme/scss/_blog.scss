@@ -1,3 +1,5 @@
+@import "deps";
+
 .hero.has-bg-img {
   margin-bottom: 2em;
   position: relative;
@@ -39,4 +41,26 @@
   .title, .subtitle {
     color: #fefefe;
   }
+}
+
+@include widescreen {
+  .blog-content {
+
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+
+    nav.navbar.is-fixed-top {
+      position: unset;
+      background-color: #333;
+    }
+
+    footer {
+      grid-column: 1 / 3;
+    }
+  }
+}
+
+.blog-content main {
+  //max-width: 800px;
+  //margin-left: auto;
 }

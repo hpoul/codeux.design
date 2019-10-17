@@ -2,10 +2,14 @@
 
 .portfolio-project {
   //@include row;
-  @include grid-row(1024px);
+  @extend .columns;
+  &.even {
+    flex-direction: row-reverse;
+  }
 
   .portfolio-project-mockup {
-    @include grid-col(1/2, 0);
+    //@include grid-col(1/2, 0);
+    @extend .column;
     background-color: $color-green-lighter;
 
     text-align: center;
@@ -22,11 +26,19 @@
   }
 
   .portfolio-project-info {
-    @include grid-col(1/2, 0);
+    //@include grid-col(1/2, 0);
+    @extend .column;
 
     background-color: #FCFCFC;
 
-    padding: mydip(64);
+    //padding: mydip(64);
+
+    padding-top: mydip(64);
+    padding-bottom: mydip(64);
+    > * {
+      margin-left: mydip(64);
+      margin-right: mydip(64);
+    }
 
     h2 {
       font-weight: normal;

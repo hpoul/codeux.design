@@ -1,3 +1,5 @@
+//@import "~normalize.css/normalize";
+
 @import "variables";
 
 
@@ -27,15 +29,27 @@ $secondary: $color-orange;
 body {
   font-family: Rubik, sans-serif;
   color: #666;
+
+  //&.has-navbar-fixed-top {
+  //  padding-top: mydip(64);
+  //}
 }
+
 a {
   text-decoration: none;
   font-weight: bold;
   color: $color-green;
 }
 
+.ux-landingpage {
+  //p,h1,h2,h3,h4,h5,h6 {
+  //  margin: 0;
+  //}
 
-
+  main {
+    @extend .container;
+  }
+}
 
 
 
@@ -43,21 +57,47 @@ a {
 
 .herby-info, .competence-field, .competence-footer {
 
+  @extend .container;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  //@include grid-row(760px);
+  //max-width: 760px;
+  //@extend .container;
+  //max-width: 760px;
 
-  @include grid-row(760px);
+  @extend .columns;
+  //@extend .is-gapless;
+  //@extend .is-desktop;
   align-items: center;
 
   margin-top: mydip(64);
   //margin-bottom: modular-scale(4);
 
   .info-column {
-    @include grid-col(9/12);
+    //@include grid-col(9/12);
+    @extend .column;
+    @extend .is-9;
     text-align: right;
     font-size: 24px;
     padding-right: mydip(16);
+
+    @include until($tablet) {
+      text-align: center;
+    }
   }
   .avatar-column {
-    @include grid-col(3/12);
+    //@include grid-col(3/12);
+    @extend .column;
+    @extend .is-3;
+
+    .avatar-herbert-image {
+      display: inline-block;
+    }
+
+    @include until($tablet) {
+      text-align: center;
+    }
   }
 
   h1 {

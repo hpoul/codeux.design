@@ -95,12 +95,9 @@ fun WebsiteTheme.portfolioRenderer(config: ThemeConfig) {
             }
             if (index % 2 == 0) {
                 classes = classes + "even"
-                info()
-                mockup()
-            } else {
-                mockup()
-                info()
             }
+            mockup()
+            info()
 
         }
     }

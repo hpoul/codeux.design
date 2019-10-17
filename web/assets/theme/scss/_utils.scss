@@ -1,0 +1,9 @@
+@function mydip ($dip) {
+  @return $dip * 1px;
+}
+
+@mixin widescreen {
+  @media screen and (min-width: $widescreen) {
+    @content;
+  }
+}

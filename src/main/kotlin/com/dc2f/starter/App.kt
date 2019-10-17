@@ -6,9 +6,9 @@ import com.dc2f.common.contentdef.*
 import com.dc2f.common.theme.*
 import com.dc2f.render.*
 import com.dc2f.richtext.RichText
-import com.dc2f.util.Dc2fConfig
 import com.fasterxml.jackson.annotation.JacksonInject
 import kotlinx.html.*
+import org.w3c.dom.Document
 
 class WebsiteTheme : BaseTheme() {
     override fun configure(config: ThemeConfig) {
@@ -29,6 +29,61 @@ class WebsiteTheme : BaseTheme() {
         }
         super.baseTemplateNavBar(tc, context, website, navbarMenuOverride)
     }
+
+    override fun <T> baseTemplate(
+        tc: TagConsumer<T>,
+        context: RenderContext<*>,
+        seo: PageSeo,
+        headInject: HEAD.() -> Unit,
+        navbarMenuOverride: (DIV.() -> Unit)?,
+        mainContent: DIV.() -> Unit
+    ): Document = scaffold(tc, context, seo, headInject) {
+        val website = context.rootNode as BaseWebsite
+        tc.nav("") {
+            role = "navigation"
+            attributes["aria-label"] = "main navigation"
+            div("container") {
+                baseTemplateNavBar(tc, context, website, navbarMenuOverride)
+            }
+        }
+
+        tc.main {
+            div {
+                if (context.node is Blog || context.node is Article) {
+//                    div("columns is-desktop") {
+                    div("blog-main-content") {
+                        mainContent()
+                    }
+//                        div("column is-4") {
+//                            +"this must be sub stuff"
+//                        }
+//                    }
+                } else {
+                    mainContent()
+                }
+            }
+        }
+
+        siteFooter(context)
+    }
+
+
+    override fun <T> scaffold(
+        tc: TagConsumer<T>,
+        context: RenderContext<*>,
+        seo: PageSeo,
+        headInject: HEAD.() -> Unit,
+        body: BODY.() -> Unit
+    ): Document =
+        super.scaffold(tc, context, seo, headInject, body = {
+            if (context.node is Blog || context.node is Article) {
+                classes = classes + "blog-content"
+            }
+            if (context.node is CodeUxLandingPage) {
+                classes = classes + "ux-landingpage"
+            }
+            body()
+        })
 }
 
 abstract class MyWebsite : BaseWebsite
@@ -44,7 +99,7 @@ fun main(args: Array<String>) =
         GeneratorDc2fConfig(
             contentDirectory = "web/content",
             staticDirectory = "web/static",
-            assetBaseDirectory = "src/main/resources/theme",
+            assetBaseDirectory = "web/assets",
             rootContentType = MyWebsite::class,
             theme = WebsiteTheme(),
             urlConfigFromRootContent = { it.config.url }

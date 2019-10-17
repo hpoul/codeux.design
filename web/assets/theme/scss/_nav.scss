@@ -7,8 +7,8 @@
     display: inline-block;
     width: mydip(30);
     height: mydip(30);
-    padding-top: mydip(10);
-    padding-bottom: mydip(16);
+    padding-top: mydip(4);
+    //padding-bottom: mydip(16);
     margin-right: mydip(16);
 
     &:hover {
@@ -26,11 +26,11 @@ nav {
   box-shadow: 0 1px 2px 0 rgba(73,73,73,0.13);
   z-index: 1;
 
-  .row {
+  .container {
     @include grid-row(1024px);
   }
-
-  .page-sections {
+/*
+  .navbar-menu {
     @include grid-col(4/12);
     //@include shift(4);
 
@@ -38,7 +38,7 @@ nav {
     text-align: right;
 
     a {
-      /* WELCOME: */
+      // WELCOME:
       font-size: 26px;
       color: #97C965;
       letter-spacing: 0;
@@ -46,8 +46,17 @@ nav {
       text-transform: uppercase;
       padding-top: mydip(16);
       padding-bottom: mydip(16);
-      display: block;
+      display: inline-block;
+    }
+    a::before {
+      border-left: 1px solid #ccc;
+      content: ' ';
+      margin-left: mydip(8);
+      margin-right: mydip(8);
+    }
+    a:first-child::before {
+      border-left: none;
     }
   }
-
+*/
 }
