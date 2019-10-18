@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://purl.org/rss/1.0/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel rdf:about="https://codeux.design/articles/">
+    <title>Blog - Flutter development, UX and everything else.</title>
+    <link>https://codeux.design/articles/</link>
+    <description>Everything keeping me busy.</description>
+    <items>
+      <rdf:Seq>
+        <rdf:li />
+      </rdf:Seq>
+    </items>
+  </channel>
+  <item rdf:about="https://codeux.design/articles/launching-new-blog/">
+    <title>Launching new blog &#x1f389;️</title>
+    <link>https://codeux.design/articles/launching-new-blog/</link>
+    <dc:date>2019-10-15T15:41:00Z</dc:date>
+  </item>
+</rdf:RDF>
+
