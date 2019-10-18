@@ -1,0 +1,18 @@
+<div class="blog-sidebar">
+    <div class="column has-text-centered">
+        <div class="avatar-herbert-image-wrapper">
+            <div class="avatar-herbert-image-dark"></div>
+        </div>
+
+        <img class="logotext" src="{{ render(content=node.embed.figures.textlogo.image.hrefRenderable) }}" />
+        <hr />
+        <h3>Flutter App Developer and UX Designer</h3>
+{#        <h4>#flutter #dart #ios #android #swift #kotlin #objc #java</h4>#}
+        <hr />
+        <div>
+            <a href="{{ href(path="/") }}" class="button is-outlined is-rounded">Home</a>
+            <a href="{{ href(path="/articles") }}" class="button is-outlined is-rounded">Blog</a>
+            <a href="mailto:herbert@codeux.design" class="button is-outlined is-rounded">Contact</a>
+        </div>
+    </div>
+</div>

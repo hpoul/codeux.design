@@ -1,6 +1,6 @@
 package com.dc2f.starter
 
-import com.dc2f.Nestable
+import com.dc2f.*
 import com.dc2f.common.*
 import com.dc2f.common.contentdef.*
 import com.dc2f.common.theme.*
@@ -45,6 +45,17 @@ class WebsiteTheme : BaseTheme() {
             div("container") {
                 baseTemplateNavBar(tc, context, website, navbarMenuOverride)
             }
+            val loaderContext = context.renderer.loaderContext
+
+            (loaderContext.contentByPath[ContentPath.parse("/partials/blogheader")] as? Partial)
+                ?.let { header ->
+                    richText(context.createSubContext(header, context.out, context.node), header.html)
+//                    context.renderer.renderPartialContent(
+//                        header,
+//                        requireNotNull(loaderContext.metadata[header]),
+//                        context
+//                    )
+                }
         }
 
         tc.main {
