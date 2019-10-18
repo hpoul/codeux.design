@@ -2,7 +2,6 @@
 
 @import "variables";
 
-
 $primary: $color-green;
 $secondary: $color-orange;
 
@@ -208,3 +207,24 @@ a {
   margin-left: auto;
   margin-right: auto;
 }
+
+code.hljs {
+  display: block;
+  overflow-x: unset;
+  padding: unset;
+  background: unset;
+}/*
+{
+  align-items: unset;
+  background-color: unset;
+  border-radius: unset;
+  display: unset;
+  font-size: unset;
+  height: unset;
+  justify-content: unset;
+  margin-right: unset;
+  min-width: unset;
+  padding: unset;
+  text-align: unset;
+  vertical-align: unset;
+}*/

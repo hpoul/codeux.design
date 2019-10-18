@@ -1,0 +1,11 @@
+author: 'Herbert Poul'
+date: '2019-10-18 17:41'
+categories:
+- 'Flutter'
+seo:
+  title: 'Building Flutter App on Travis️'
+  description: |
+    Crash course in best practices building,
+    bundling and releasing flutter app on a CI
+title: 'CI: Building a Flutter App on Travis️'
+teaser: 'train-821500_1920.jpg'

@@ -1,0 +1,12 @@
+author: 'Herbert Poul'
+date: '2019-10-20 17:41'
+categories:
+- 'Flutter'
+slug: 'manage-secrets-flutter-project'
+seo:
+  title: 'Manage secrets in a flutter project with Blackbox'
+  description: |
+    Securely store secrets like secret keys or API secrets in a public git
+    repository you are using for your flutter app.
+title: 'Manage secrets in a flutter project with Blackbox'
+teaser: 'door-1587863_1920.jpg'

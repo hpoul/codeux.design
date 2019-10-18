@@ -124,7 +124,7 @@ fun WebsiteTheme.themeOverrides(config: ThemeConfig) {
                 div("container") {
                     div("columns") {
                         div("column") {
-                            div("content has-drop-caps") {
+                            div("content has-drop-caps line-numbers") {
                                 node.html?.let { richText(context, node.html) }
                                     ?: markdown(context, node.body)
                             }
