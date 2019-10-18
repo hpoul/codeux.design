@@ -64,9 +64,13 @@ $blog-width: 800px;
 
     width: $blog-width;
     margin-left: auto;
-
     nav {
-      &::after {
+      width: $blog-width;
+      margin-left: auto;
+    }
+
+    .blog-sidebar {
+      &::before {
         content: ' ';
         top: 0;
         left: 0;
@@ -79,13 +83,14 @@ $blog-width: 800px;
         opacity: 0.3;
       }
 
+      position: fixed;
       right: $blog-width;
       height: 100%;
       background-color: #0a0a0a;
     }
 
     .navbar-menu {
-      display: none;
+      //display: none;
     }
 
     nav.navbar.is-fixed-top {
@@ -100,13 +105,13 @@ $blog-width: 800px;
     .blog-sidebar {
       z-index: 10;
       display: block;
-      position: absolute;
+      //position: absolute;
       left: 0;
       top: 0;
-      right: 0;
+      //right: 0;
       bottom: 0;
       color: $light-text-color;
-      padding-top: 20%;
+      padding-top: 10%;
 
       h3 {
         font-weight: bold;

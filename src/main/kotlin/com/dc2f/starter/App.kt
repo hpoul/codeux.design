@@ -9,9 +9,11 @@ import com.dc2f.richtext.RichText
 import com.fasterxml.jackson.annotation.JacksonInject
 import kotlinx.html.*
 import org.w3c.dom.Document
+import java.time.format.*
 
 class WebsiteTheme : BaseTheme() {
     override fun configure(config: ThemeConfig) {
+        themeOverrides(config)
         super.configure(config)
         portfolioRenderer(config)
     }
@@ -45,18 +47,19 @@ class WebsiteTheme : BaseTheme() {
             div("container") {
                 baseTemplateNavBar(tc, context, website, navbarMenuOverride)
             }
-            val loaderContext = context.renderer.loaderContext
 
-            (loaderContext.contentByPath[ContentPath.parse("/partials/blogheader")] as? Partial)
-                ?.let { header ->
-                    richText(context.createSubContext(header, context.out, context.node), header.html)
+
+        }
+        val loaderContext = context.renderer.loaderContext
+        (loaderContext.contentByPath[ContentPath.parse("/partials/blogheader")] as? Partial)
+            ?.let { header ->
+                richText(context.createSubContext(header, context.out, context.node), header.html)
 //                    context.renderer.renderPartialContent(
 //                        header,
 //                        requireNotNull(loaderContext.metadata[header]),
 //                        context
 //                    )
-                }
-        }
+            }
 
         tc.main {
             div {
@@ -95,6 +98,43 @@ class WebsiteTheme : BaseTheme() {
             }
             body()
         })
+}
+
+fun WebsiteTheme.themeOverrides(config: ThemeConfig) {
+    config.pageRenderer<Article> {
+        baseTemplate(appendHTML(), this, node.seo) {
+            div("hero is-medium has-bg-img") {
+                div("bg-image") {
+                    // TODO image resize and blur
+                    style = "background-image: url('${node.teaser.href(context)}')"
+                    +"x"
+                }
+                div("hero-body has-text-centered") {
+                    h1("title") { +node.title }
+                    h2("subtitle is-size-6 has-text-weight-bold") {
+                        // TODO format date
+                        +(node.subTitle ?: node.date.format(
+                            DateTimeFormatter.ofLocalizedDate(
+                                FormatStyle.LONG)))
+                    }
+                }
+            }
+
+            div("section") {
+                div("container") {
+                    div("columns") {
+                        div("column") {
+                            div("content has-drop-caps") {
+                                node.html?.let { richText(context, node.html) }
+                                    ?: markdown(context, node.body)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 abstract class MyWebsite : BaseWebsite
