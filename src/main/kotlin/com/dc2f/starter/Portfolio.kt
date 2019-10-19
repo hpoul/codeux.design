@@ -33,7 +33,7 @@ abstract class PortfolioElement : LandingPageElement() {
 fun WebsiteTheme.portfolioRenderer(config: ThemeConfig) {
 
     config.pageRenderer<HerbyIntro> {
-        appendHTML().header("herby-info") {
+        appendHtmlPartial().header("herby-info") {
             div("info-column") {
                 div("header-logo") {
                     img {
@@ -53,7 +53,7 @@ fun WebsiteTheme.portfolioRenderer(config: ThemeConfig) {
 
     config.pageRenderer<PortfolioElement> {
         val index = ((enclosingNode as LandingPage).children.indexOf(node))
-        appendHTML().div(
+        appendHtmlDocument().div(
             "portfolio-project"
         ) {
             fun info() {

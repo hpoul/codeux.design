@@ -141,7 +141,7 @@ class WebsiteTheme : BaseTheme() {
 
 fun WebsiteTheme.themeOverrides(config: ThemeConfig) {
     config.pageRenderer<Article> {
-        baseTemplate(appendHTML(), this, node.seo) {
+        baseTemplate(appendHtmlDocument(), this, node.seo) {
             div("hero is-medium has-bg-img") {
                 div("bg-image") {
                     // TODO image resize and blur
