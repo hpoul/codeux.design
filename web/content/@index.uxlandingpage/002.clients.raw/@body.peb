@@ -4,7 +4,7 @@
         I am a full stack <strong>mobile and web developer</strong> with experience developing iOS and Android applications as well as web apps.
     </div>
     <div class="avatar-column">
-        <img src="{{ render(content=rootNode.embed.figures.avatarCode.image.hrefRenderable) }}" width="84" height="83" />
+        <img src="{{ render(content=rootNode.embed.figures.avatarCode.image.hrefRenderable) }}" alt="Code/Development" width="84" height="83" />
         <h2>Code &amp;<br /> Development</h2>
     </div>
 </div>
@@ -14,14 +14,14 @@
         With a passion for <strong>UX, UI and Product Design</strong>. Proficient in design tools, interactive Prototyping and iterative product development.
     </div>
     <div class="avatar-column">
-        <img src="{{ render(content=rootNode.embed.figures.avatarUx.image.hrefRenderable) }}" width="84" height="83" />
+        <img src="{{ render(content=rootNode.embed.figures.avatarUx.image.hrefRenderable) }}" alt="User Experience" width="84" height="83" />
         <h2>User<br /> Experience</h2>
     </div>
 </div>
 
 <div class="competence-footer">
     <div class="info-column">
-        <p><img src="{{ render(content=node.embed.figures.signature.image.hrefRenderable) }}" width="176" height="53" /></p>
+        <p><img src="{{ render(content=node.embed.figures.signature.image.hrefRenderable) }}" alt="Herbert Poul Signature" width="176" height="53" /></p>
         <h3>So what about you?</h3>
         <a href="mailto:herbert@codeux.design" class="cta">Make my project successful</a>
     </div>

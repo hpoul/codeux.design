@@ -64,9 +64,8 @@ fun WebsiteTheme.portfolioRenderer(config: ThemeConfig) {
                             ?: +node.subTitle
                     }
 
-                    p {
-                        richText(context, node.intro)
-                    }
+                    // markdown content is always rendered with <p> tag.
+                    richText(context, node.intro)
 
                     div("portfolio-project-info-code") {
                         div("info-tags") {
