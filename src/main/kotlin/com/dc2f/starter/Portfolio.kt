@@ -53,7 +53,7 @@ fun WebsiteTheme.portfolioRenderer(config: ThemeConfig) {
 
     config.pageRenderer<PortfolioElement> {
         val index = ((enclosingNode as LandingPage).children.indexOf(node))
-        appendHtmlDocument().div(
+        appendHtmlPartial().div(
             "portfolio-project"
         ) {
             fun info() {

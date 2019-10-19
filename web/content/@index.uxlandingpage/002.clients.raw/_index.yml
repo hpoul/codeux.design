@@ -2,22 +2,30 @@ embed:
   figures:
     signature:
       image: 'signature.png'
+      title: 'Signature'
+      inlineImage: true
     austrianapps:
       image: 'austrianapps.png'
+      title: 'Austrian Apps GmbH'
       inlineImage: true
     bueroservice:
       image: 'bueroservice.png'
+      title: 'Benefit Büroservice GmbH'
       inlineImage: true
     elsevier:
       image: 'elsevier.png'
+      title: 'Elsevier'
       inlineImage: true
     oeamtc:
       image: 'oeamtc.png'
+      title: 'ÖAMTC'
       inlineImage: true
     tapoIt:
       image: 'tapo-it.png'
+      title: 'TaPo-IT OG'
       inlineImage: true
     telekom:
       image: 'telekom.png'
+      title: 'Telekom'
       inlineImage: true
 
