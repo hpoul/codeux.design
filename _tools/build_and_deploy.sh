@@ -16,7 +16,7 @@ echo WARNING WARNING
 echo WARNING WARNING
 echo
 echo "purge cloudflare cachedisabled"
-#./_tools/purge_cloudflare_cache.sh
+./_tools/purge_cloudflare_cache.sh
 
 ./_tools/gh-pages-deploy.sh
 
