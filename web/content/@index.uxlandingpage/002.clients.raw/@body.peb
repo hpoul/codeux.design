@@ -27,28 +27,6 @@
     </div>
 </div>
 
-<!--
-            <div class="hero-column code">
-            <img src="images/avatar/code.svg" width="84" height="83" />
-            <h2>Code</h2>
-            <p>Full Stack developer for iOS, Android and Web Applications.</p>
-        </div>
-        <div class="hero-column ux">
-            <img src="images/avatar/ux.svg" width="84" height="83" />
-            <h2>User Experience</h2>
-            <p>Simplified User Experience, Research, Iterative Design.</p>
-        </div>
-        <div class="hero-column personal">
-            <img src="images/avatar/personal.svg" width="84" height="83"/>
-            <h2>Personal</h2>
-            <p>Sports, Photography, Travel</p>
-        </div>
-    </div>
-</div>
-</div>
--->
-</div>
-
 <div class="landing-clients">
     <div>
         <h4>Clients and Partners</h4>

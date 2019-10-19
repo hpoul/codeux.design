@@ -8,6 +8,7 @@ import com.dc2f.render.*
 import com.dc2f.richtext.RichText
 import com.fasterxml.jackson.annotation.JacksonInject
 import kotlinx.html.*
+import org.unbescape.javascript.JavaScriptEscape
 import org.w3c.dom.Document
 import java.time.format.*
 
@@ -168,6 +169,34 @@ fun WebsiteTheme.themeOverrides(config: ThemeConfig) {
                                     ?: markdown(context, node.body)
                             }
                         }
+                    }
+                }
+            }
+
+            div("section") {
+                div("container") {
+                    unsafe {
+                        val website = context.rootNode as MyWebsite
+                        raw("""
+<div id="disqus_thread"></div>
+<script>
+
+var disqus_config = function () {
+this.page.url = '${JavaScriptEscape.escapeJavaScript(context.href(node, true))}';
+this.page.identifier = '${JavaScriptEscape.escapeJavaScript(context.renderer.findRenderPath(node).toString())}';
+};
+setTimeout(function(){
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://codeuxdesign.disqus.com/embed.js';
+s.async = true;
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+}, 1000);
+</script>
+<noscript>Please enable JavaScript.</noscript>
+                        """.trimIndent())
                     }
                 }
             }

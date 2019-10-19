@@ -47,6 +47,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("com.dc2f:dc2f:$dc2fVersion")
     implementation("com.dc2f:dc2f-common:$dc2fVersion")
+    implementation("org.unbescape:unbescape:1.1.6.RELEASE")
 
 
     // Use the Kotlin test library.

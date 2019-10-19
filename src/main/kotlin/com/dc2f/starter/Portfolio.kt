@@ -89,7 +89,9 @@ fun WebsiteTheme.portfolioRenderer(config: ThemeConfig) {
                         context,
                         node.screenshot,
                         Resize(height = 400, fillType = FillType.Fit)
-                    )
+                    ) {
+                        alt = node.title
+                    }
                 }
             }
             if (index % 2 == 0) {

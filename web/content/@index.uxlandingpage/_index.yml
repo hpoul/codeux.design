@@ -5,7 +5,13 @@ embed:
   figures:
     fb:
       image: 'social-facebookx2.png'
+      inlineImage: true
+      title: 'Facebook'
     gh:
       image: 'social-githubx2.png'
+      inlineImage: true
+      title: 'GitHub'
     twtr:
       image: 'social-twitterx2.png'
+      inlineImage: true
+      title: 'Twitter'

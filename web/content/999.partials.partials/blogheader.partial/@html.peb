@@ -4,7 +4,7 @@
             <div class="avatar-herbert-image-dark"></div>
         </div>
 
-        <img class="logotext" src="{{ render(content=node.embed.figures.textlogo.image.hrefRenderable) }}" />
+        <img class="logotext" src="{{ render(content=node.embed.figures.textlogo.image.hrefRenderable) }}" alt="codeux.design" />
         <hr />
         <h3>Flutter App Developer and UX Designer</h3>
 {#        <h4>#flutter #dart #ios #android #swift #kotlin #objc #java</h4>#}
