@@ -3,6 +3,12 @@
 .portfolio-project {
   //@include row;
   @extend .columns;
+  @extend .is-gapless;
+
+  &:not(:last-child) {
+    margin-bottom: 0;
+  }
+
   &.even {
     flex-direction: row-reverse;
   }

@@ -22,7 +22,9 @@ $secondary: $color-orange;
 @import "landing_portfolio";
 @import "blog";
 
-
+.content {
+  overflow-wrap: break-word;
+}
 
 
 body {
