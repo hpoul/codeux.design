@@ -2,8 +2,10 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        main: ['./web/src/main.ts',
-        './web/src/myprism.js']
+        main: [
+            './web/src/main.ts',
+            './web/src/code-highlight.js'
+        ]
     },
     module: {
         rules: [

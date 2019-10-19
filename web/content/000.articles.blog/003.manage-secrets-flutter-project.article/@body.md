@@ -71,5 +71,172 @@ bash$
 
 # Configure signing keys for android
 
+It's a good practice to keep your secrets in one place instead of scattering
+them across the whole project. So I tend to have a `_tools/secrets` folder in
+my projects which contain all non-public files.
+
+The easiest way to keep your android release and upload keys secure is to add
+a new `build_secrets.gradle.kts` file which is conditionally imported into your
+main gradle file if it is available.
+
+(My examples use gradle kotlin dsl. it should only require minor adjustments
+for gradle groovy syntax).
+
+**_tools/secrets/android_build_secrets.gradle.kts**
+
+```kotlin
+allprojects {
+    // requires path relative to the `android` directory.
+    extra["secrets.keyAlias"] = "MyKeyAlias"
+    extra["secrets.storeFile"] = "../_tools/secrets/android_upload_key.jks"
+    extra["secrets.storePassword"] = "MySecretPassword"
+}
+```
+
+Now copy your upload or signing key to `_tools/secrets/android_upload_key.jks`
+and add both to blackbox:
+
+```console
+bash$ blackbox_register_new_file _tools/secrets/android_build_secrets.gradle.kts _tools/secrets/android_upload_key.jks 
+      ========== PLAINFILE _tools/secrets/android_build_secrets.gradle.kts
+      ========== ENCRYPTED _tools/secrets/android_build_secrets.gradle.kts.gpg
+      ========== PLAINFILE _tools/secrets/android_upload_key.jks
+      ========== ENCRYPTED _tools/secrets/android_upload_key.jks.gpg
+Local repo updated.  Please push when ready.
+    git push
+bash$
+```
+
+You should now be left with only `.gpg` files and have the real files 
+encrypted and added to your `.gitignore`. To be able to continue using those
+files, run `blackbox_postdeploy`
+
+```console
+bash$ blackbox_postdeploy
+========== EXTRACTED _tools/secrets/android_build_secrets.gradle.kts
+========== EXTRACTED _tools/secrets/android_upload_key.jks
+========== Decrypting new/changed files: DONE
+bash$
+```
+
+---
+
+**android/app/build.gradle.kts**
+
+```kotlin
+val secretConfig = file("../_tools/secrets/build_secrets.gradle.kts")
+if (secretConfig.exists()) {
+    apply { from(secretConfig) }
+} else {
+    println("Warning: Secrets not found, release signing disabled.")
+}
+
+// ...
+
+android {
+    signingConfigs {
+        release {
+            keyAlias project.properties["secrets.keyAlias"] ?: ""
+            keyPassword project.properties['secrets.storePassword']
+            // Provide a dummy default value, null would break builds.
+            storeFile file(project.properties['secrets.storeFile'] ?: "invalid")
+            storePassword project.properties['secrets.storePassword']
+        }
+    }
+}
+
+```
+
+🎉️ aaaand now you are done. Feel save to commit and push your changes.
+Your secrets are save, but you can still conveniently export your signed 
+appbundles/apks.
+
 # Secret API Keys for your flutter app
 
+To access "secret" API keys (for example for accessing services like firebase
+or analytics) you can use a separate entry point for your flutter app.
+
+So instead of using the default `lib/main.dart` you create your custom
+`lib/env/production.dart` with a main method like:
+
+**lib/env/production.dart**
+```dart
+import '../main.dart';
+import './production_secrets.dart';
+
+void main() {
+    startApp(ProductionSecrets());
+}
+```
+
+Now modify your main.dart so we start our app with the provided secrets.
+We can then use the [Provider package](https://pub.dev/packages/provider) to 
+make it available throughout the app.
+
+**lib/main.dart**
+
+```dart
+import 'package:provider/provider.dart';
+
+abstract class Secrets {
+    abstract String get firebaseApiKey;
+}
+
+void startApp(Secrets secrets) {
+    runApp(MyApp(secrets: secrets));
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key key, this.secrets}) : super(key: key);
+
+  final Secrets secrets;
+  @override
+  Widget build(BuildContext context) {
+    return Provider<Secrets>.value(
+      value: secrets,
+      child: // ...
+    );
+  }
+}
+
+```
+
+Now simply add your secrets as an implementation of the `Secrets` class
+and you are ready to go:
+
+**lib/env/production_secrets.dart**
+
+```dart
+class ProductionSecrets implements Secrets {
+  @override String get firebaseApiKey => 'D484fDKJE4';
+}
+```
+
+!!! note "Note"
+    To keep things tidy you can put this file into `_tools/secrets/` and
+    symlink it into your `lib/env/` folder.
+
+Make sure to register the file with blackbox so it is encrypted correctly.
+
+```console
+bash$ blackbox_register_new_file lib/env/production_secrets.dart
+========== PLAINFILE lib/env/production_secrets.dart
+========== ENCRYPTED lib/env/production_secrets.dart.gpg
+========== UPDATING VCS: DONE
+Local repo updated.  Please push when ready.
+    git push
+```
+
+## Update release script to use new secrets.
+
+Now you have to tell `flutter build` (and `flutter run`) to use your new
+secrets file. To do this simply pass in the `-t` parameter:
+
+```console
+bash$ flutter build appbundle -t lib/env/production.dart
+```
+
+If you require it during production you can also set the entrypoint in 
+Android Studio:
+
+{{render content=node.embed.figures.entryPoint /}}

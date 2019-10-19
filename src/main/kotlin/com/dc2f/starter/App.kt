@@ -78,7 +78,7 @@ class WebsiteTheme : BaseTheme() {
             }
         }
 
-        siteFooter(context)
+        siteFooter(tc, context)
     }
 
 
@@ -98,6 +98,45 @@ class WebsiteTheme : BaseTheme() {
             }
             body()
         })
+
+
+    fun <T> siteFooter(
+        tc: TagConsumer<T>,
+        context: RenderContext<*>
+    ) {
+        val website = context.rootNode as BaseWebsite
+        tc.footer("footer") {
+            div("columns") {
+                website.footerMenu.map { menu ->
+                    div("column") {
+                        span("footer-title title is-4") { +menu.name }
+
+                        ul {
+                            menu.children.map { entry ->
+                                li {
+                                    a(entry.href(context)) {
+                                        +entry.linkLabel
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                div("column") {
+                    richText(
+                        context,
+                        (website.footerContent?.referencedContent as? Partial)?.html,
+                        mapOf("type" to "footer")
+                    )
+
+                }
+
+
+            }
+
+        }
+
+    }
 }
 
 fun WebsiteTheme.themeOverrides(config: ThemeConfig) {

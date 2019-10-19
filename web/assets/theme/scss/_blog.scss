@@ -1,5 +1,7 @@
 @import "deps";
 
+@import "blog_markdown_admonition";
+
 .hero.has-bg-img {
   margin-bottom: 2em;
   position: relative;
@@ -162,4 +164,29 @@ $blog-width: 800px;
 }
 .blog-main-content .column {
   max-width: 100%;
+}
+
+a.md-anchor {
+  color: inherit;
+}
+.md-anchor:target {
+  //color: red;
+}
+.md-anchor:target::after, .md-anchor:hover::after {
+  content: ' ¶';
+  display: inline;
+  color: rgba(0, 0, 0, 0.3);
+}
+.md-anchor::before {
+  content: '';
+  display: block;
+  margin-top: -9px;
+  padding-top: 9px;
+}
+
+.md-anchor:target::before {
+  padding-top: 64px;
+  margin-top: -64px;
+  color: inherit;
+  content: ' ';
 }

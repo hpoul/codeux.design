@@ -1,5 +1,5 @@
 author: 'Herbert Poul'
-date: '2019-10-20 17:41'
+date: '2019-10-19 17:41'
 categories:
 - 'Flutter'
 slug: 'manage-secrets-flutter-project'
@@ -10,3 +10,8 @@ seo:
     repository you are using for your flutter app.
 title: 'Manage secrets in a flutter project with Blackbox'
 teaser: 'door-1587863_1920.jpg'
+embed:
+  figures:
+    entryPoint:
+      image: configure-dart-entrypoint.png
+      title: 'Configure Dart Entrypoint to use your secrets.'
