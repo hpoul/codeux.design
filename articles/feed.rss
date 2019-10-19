@@ -7,6 +7,8 @@
     <items>
       <rdf:Seq>
         <rdf:li />
+        <rdf:li />
+        <rdf:li />
       </rdf:Seq>
     </items>
   </channel>
@@ -14,6 +16,16 @@
     <title>Launching new blog &#x1f389;️</title>
     <link>https://codeux.design/articles/launching-new-blog/</link>
     <dc:date>2019-10-15T15:41:00Z</dc:date>
+  </item>
+  <item rdf:about="https://codeux.design/articles/ci-building-a-flutter-app-on-travis/">
+    <title>CI: Building a Flutter App on Travis️</title>
+    <link>https://codeux.design/articles/ci-building-a-flutter-app-on-travis/</link>
+    <dc:date>2019-10-24T15:41:00Z</dc:date>
+  </item>
+  <item rdf:about="https://codeux.design/articles/manage-secrets-flutter-project/">
+    <title>Manage secrets in a flutter project with Blackbox</title>
+    <link>https://codeux.design/articles/manage-secrets-flutter-project/</link>
+    <dc:date>2019-10-19T15:41:00Z</dc:date>
   </item>
 </rdf:RDF>
 

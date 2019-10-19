@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Manage secrets in a flutter project with Blackbox | CodeUX.design e.U. - Herbert Poul</title>
+    <meta content="Manage secrets in a flutter project with Blackbox | CodeUX.design e.U. - Herbert Poul" property="og:title">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles/css/main.8384194c22279c9f890bd9e5be4889c15586b7848400466986e07ba8991ff641.css" integrity="sha256-g4QZTCInnJ+JC9nlvkiJwVWGt4SEAEZphuB7qJkf9kE=">
+    <script type="text/javascript" src="/script/main.js" async="async"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/favicon.ico" rel="icon" type="image/x-icon">
+    <link href="/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16">
+    <link href="/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+    <meta name="description" content="Securely store secrets like secret keys or API secrets in a public git
+repository you are using for your flutter app.
+">
+    <meta content="Securely store secrets like secret keys or API secrets in a public git
+repository you are using for your flutter app.
+" property="og:description">
+    <meta content="Securely store secrets like secret keys or API secrets in a public git
+repository you are using for your flutter app.
+" property="twitter:description">
+    <meta content="https://codeux.design/articles/manage-secrets-flutter-project/" property="og:url">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Manage secrets in a flutter project with Blackbox","mainEntityOfPage":{"@type":"WebPage","@id":"https://codeux.design/articles/manage-secrets-flutter-project/"},"image":"https://codeux.design/articles/manage-secrets-flutter-project/door-1587863_1920.jpg","wordcount":815,"url":"https://codeux.design/articles/manage-secrets-flutter-project/","publisher":{"@type":"Organization","name":"CodeUX.design e.U. - Herbert Poul","logo":{"@type":"ImageObject","url":null}},"author":{"@type":"Person","name":"Herbert Poul"},"description":"Securely store secrets like secret keys or API secrets in a public git\nrepository you are using for your flutter app.\n"}</script>
+    <meta content="https://codeux.design/articles/manage-secrets-flutter-project/door-1587863_1920.jpg" property="og:image">
+    <meta content="1920" property="og:image:width">
+    <meta content="1280" property="og:image:height">
+    <meta content="https://codeux.design/articles/manage-secrets-flutter-project/door-1587863_1920.jpg" property="twitter:image">
+    <meta content="article" property="og:type">
+  </head>
+  <body class="has-navbar-fixed-top has-spaced-navbar-fixed-top blog-content">
+    <nav class="" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand"><a class="navbar-burger" role="button" data-target="main-menu" aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span></a></div>
+        <div class="navbar-menu" id="main-menu">
+          <div class="navbar-end"><a href="/" class="navbar-item" title="Home">Home</a><a href="/articles/" class="navbar-item is-active" title="Blog">Blog</a></div>
+        </div>
+      </div>
+    </nav>
+<div class="blog-sidebar">
+    <div class="column has-text-centered">
+        <div class="avatar-herbert-image-wrapper">
+            <div class="avatar-herbert-image-dark"></div>
+        </div>
+
+        <img class="logotext" src="/partials/blogheader/textlogo.svg" />
+        <hr />
+        <h3>Flutter App Developer and UX Designer</h3>
+        <hr />
+        <div>
+            <a href="/" class="button is-outlined is-rounded">Home</a>
+            <a href="/articles/" class="button is-outlined is-rounded">Blog</a>
+            <a href="mailto:herbert@codeux.design" class="button is-outlined is-rounded">Contact</a>
+        </div>
+    </div>
+</div>    <main>
+      <div>
+        <div class="blog-main-content">
+          <div class="hero is-medium has-bg-img">
+            <div class="bg-image" style="background-image: url('/articles/manage-secrets-flutter-project/door-1587863_1920.jpg')">x</div>
+            <div class="hero-body has-text-centered">
+              <h1 class="title">Manage secrets in a flutter project with Blackbox</h1>
+              <h2 class="subtitle is-size-6 has-text-weight-bold">19 October 2019</h2>
+            </div>
+          </div>
+          <div class="section">
+            <div class="container">
+              <div class="columns">
+                <div class="column">
+                  <div class="content has-drop-caps line-numbers"><svg xmlns="http://www.w3.org/2000/svg" class="adm-hidden">
+<symbol id="adm-note">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<g fill="currentColor">
+<path d="m15.4 5h4.5v2.7h-4.5z" transform="matrix(-.7071 -.7071 .7071 -.7071 25.7188 23.288)"/>
+<path d="m13.9 7 3.1 3.1-9.5 9.6-3.5.3.3-3.5z"/>
+</g>
+</svg>
+</symbol>
+</svg>
+<p>For every flutter mobile app there are certain secrets which have to be
+integrated into the app. These might include API Keys or private keys
+for services like Firebase, Analytics, etc. Or provisioning profiles for
+iOS.</p>
+<h1><a href="#blackbox-overview" id="blackbox-overview" class="md-anchor">Blackbox Overview</a></h1>
+<p>It is generally not a good idea to add plaintext API keys, passwords, etc.
+to your git repository. But it is usually very convenient. This is where
+<a href="https://github.com/StackExchange/blackbox">Blackbox</a> comes in and allows
+you to store encrypted secrets along side your flutter app.</p>
+<p>Possible secrets could include:</p>
+<ul>
+<li>Upload or signing keys.</li>
+<li>Secret API Keys for services used in the app
+(like Google Analytics, etc.).</li>
+<li>Provisioning Profiles or similar.</li>
+</ul>
+<h1><a href="#installation--set-up" id="installation--set-up" class="md-anchor">Installation &amp; Set Up</a></h1>
+<p><a href="https://github.com/StackExchange/blackbox">Blackbox</a> are a collection of
+shell scripts based on GPG to store secrets inside public git repositories.</p>
+<p>Installation is as easy as cloning the git repository and adding it&rsquo;s
+<code>bin/</code> directory to your <code>$PATH</code>. I would recommend cloning my fork
+because I&rsquo;ve added a useful <code>blackbox_create_role_account</code> script.</p>
+<pre><code class="language-bash">git clone --branch create_role_account https://github.com/hpoul/blackbox/
+export PATH=$(pwd)/blackbox/bin
+</code></pre>
+<p>Afterwards to get started you have to <a href="https://help.github.com/en/articles/generating-a-new-gpg-key">set up and create a GPG signing key</a>.</p>
+<p>Now change into your git repository and we&rsquo;ll add blackbox. Make sure to
+exchange <code>my@email.com</code> with your actual email address which
+includes your GPG key.</p>
+<pre><code class="language-console">bash$ blackbox_initialize
+&gt; Enable blackbox for this git repo? (yes/no) yes
+&gt;  VCS_TYPE: git
+
+bash$ blackbox_addadmin my@email.com
+gpg: keybox '/myrepo/.blackbox/pubring.kbx' created
+gpg: /myrepo/.blackbox/trustdb.gpg: trustdb created
+gpg: key 3F58C943BC3603F4: public key &quot;Max Mustermann &lt;my@email.com&gt;&quot; imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+
+
+NEXT STEP: You need to manually check these in:
+      git commit -m'NEW ADMIN: herbert@poul.at' .blackbox/pubring.kbx .blackbox/trustdb.gpg .blackbox/blackbox-admins.txt
+
+bash$ git add .
+bash$ git commit -m 'initialized blackbox'
+[master (root-commit) 65384bd] initialized blackbox
+ 6 files changed, 6 insertions(+)
+ create mode 100644 .blackbox/.gitattributes
+ create mode 100644 .blackbox/blackbox-admins.txt
+ create mode 100644 .blackbox/blackbox-files.txt
+ create mode 100644 .blackbox/pubring.kbx
+ create mode 100644 .blackbox/trustdb.gpg
+ create mode 100644 .gitignore
+bash$
+</code></pre>
+<h1><a href="#configure-signing-keys-for-android" id="configure-signing-keys-for-android" class="md-anchor">Configure signing keys for android</a></h1>
+<p>It&rsquo;s a good practice to keep your secrets in one place instead of scattering
+them across the whole project. So I tend to have a <code>_tools/secrets</code> folder in
+my projects which contain all non-public files.</p>
+<p>The easiest way to keep your android release and upload keys secure is to add
+a new <code>build_secrets.gradle.kts</code> file which is conditionally imported into your
+main gradle file if it is available.</p>
+<p>(My examples use gradle kotlin dsl. it should only require minor adjustments
+for gradle groovy syntax).</p>
+<p><strong>_tools/secrets/android_build_secrets.gradle.kts</strong></p>
+<pre><code class="language-kotlin">allprojects {
+    // requires path relative to the `android` directory.
+    extra[&quot;secrets.keyAlias&quot;] = &quot;MyKeyAlias&quot;
+    extra[&quot;secrets.storeFile&quot;] = &quot;../_tools/secrets/android_upload_key.jks&quot;
+    extra[&quot;secrets.storePassword&quot;] = &quot;MySecretPassword&quot;
+}
+</code></pre>
+<p>Now copy your upload or signing key to <code>_tools/secrets/android_upload_key.jks</code>
+and add both to blackbox:</p>
+<pre><code class="language-console">bash$ blackbox_register_new_file _tools/secrets/android_build_secrets.gradle.kts _tools/secrets/android_upload_key.jks 
+      ========== PLAINFILE _tools/secrets/android_build_secrets.gradle.kts
+      ========== ENCRYPTED _tools/secrets/android_build_secrets.gradle.kts.gpg
+      ========== PLAINFILE _tools/secrets/android_upload_key.jks
+      ========== ENCRYPTED _tools/secrets/android_upload_key.jks.gpg
+Local repo updated.  Please push when ready.
+    git push
+bash$
+</code></pre>
+<p>You should now be left with only <code>.gpg</code> files and have the real files
+encrypted and added to your <code>.gitignore</code>. To be able to continue using those
+files, run <code>blackbox_postdeploy</code></p>
+<pre><code class="language-console">bash$ blackbox_postdeploy
+========== EXTRACTED _tools/secrets/android_build_secrets.gradle.kts
+========== EXTRACTED _tools/secrets/android_upload_key.jks
+========== Decrypting new/changed files: DONE
+bash$
+</code></pre>
+<hr />
+<p><strong>android/app/build.gradle.kts</strong></p>
+<pre><code class="language-kotlin">val secretConfig = file(&quot;../_tools/secrets/build_secrets.gradle.kts&quot;)
+if (secretConfig.exists()) {
+    apply { from(secretConfig) }
+} else {
+    println(&quot;Warning: Secrets not found, release signing disabled.&quot;)
+}
+
+// ...
+
+android {
+    signingConfigs {
+        release {
+            keyAlias project.properties[&quot;secrets.keyAlias&quot;] ?: &quot;&quot;
+            keyPassword project.properties['secrets.storePassword']
+            // Provide a dummy default value, null would break builds.
+            storeFile file(project.properties['secrets.storeFile'] ?: &quot;invalid&quot;)
+            storePassword project.properties['secrets.storePassword']
+        }
+    }
+}
+
+</code></pre>
+<p>🎉️ aaaand now you are done. Feel save to commit and push your changes.
+Your secrets are save, but you can still conveniently export your signed
+appbundles/apks.</p>
+<h1><a href="#secret-api-keys-for-your-flutter-app" id="secret-api-keys-for-your-flutter-app" class="md-anchor">Secret API Keys for your flutter app</a></h1>
+<p>To access &ldquo;secret&rdquo; API keys (for example for accessing services like firebase
+or analytics) you can use a separate entry point for your flutter app.</p>
+<p>So instead of using the default <code>lib/main.dart</code> you create your custom
+<code>lib/env/production.dart</code> with a main method like:</p>
+<p><strong>lib/env/production.dart</strong></p>
+<pre><code class="language-dart">import '../main.dart';
+import './production_secrets.dart';
+
+void main() {
+    startApp(ProductionSecrets());
+}
+</code></pre>
+<p>Now modify your main.dart so we start our app with the provided secrets.
+We can then use the <a href="https://pub.dev/packages/provider">Provider package</a> to
+make it available throughout the app.</p>
+<p><strong>lib/main.dart</strong></p>
+<pre><code class="language-dart">import 'package:provider/provider.dart';
+
+abstract class Secrets {
+    abstract String get firebaseApiKey;
+}
+
+void startApp(Secrets secrets) {
+    runApp(MyApp(secrets: secrets));
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key key, this.secrets}) : super(key: key);
+
+  final Secrets secrets;
+  @override
+  Widget build(BuildContext context) {
+    return Provider&lt;Secrets&gt;.value(
+      value: secrets,
+      child: // ...
+    );
+  }
+}
+
+</code></pre>
+<p>Now simply add your secrets as an implementation of the <code>Secrets</code> class
+and you are ready to go:</p>
+<p><strong>lib/env/production_secrets.dart</strong></p>
+<pre><code class="language-dart">class ProductionSecrets implements Secrets {
+  @override String get firebaseApiKey =&gt; 'D484fDKJE4';
+}
+</code></pre>
+<div class="adm-block adm-note">
+<div class="adm-heading">
+<svg class="adm-icon"><use xlink:href="#adm-note" /></svg><span>Note</span>
+</div>
+<div class="adm-body">
+<p>To keep things tidy you can put this file into <code>_tools/secrets/</code> and
+symlink it into your <code>lib/env/</code> folder.</p>
+</div>
+</div>
+<p>Make sure to register the file with blackbox so it is encrypted correctly.</p>
+<pre><code class="language-console">bash$ blackbox_register_new_file lib/env/production_secrets.dart
+========== PLAINFILE lib/env/production_secrets.dart
+========== ENCRYPTED lib/env/production_secrets.dart.gpg
+========== UPDATING VCS: DONE
+Local repo updated.  Please push when ready.
+    git push
+</code></pre>
+<h2><a href="#update-release-script-to-use-new-secrets" id="update-release-script-to-use-new-secrets" class="md-anchor">Update release script to use new secrets.</a></h2>
+<p>Now you have to tell <code>flutter build</code> (and <code>flutter run</code>) to use your new
+secrets file. To do this simply pass in the <code>-t</code> parameter:</p>
+<pre><code class="language-console">bash$ flutter build appbundle -t lib/env/production.dart
+</code></pre>
+<p>If you require it during production you can also set the entrypoint in
+Android Studio:</p>
+<!DOCTYPE html>
+<figure><img src="/articles/manage-secrets-flutter-project/configure-dart-entrypoint.png" alt="Configure Dart Entrypoint to use your secrets.">
+  <figcaption>
+    <h4>Configure Dart Entrypoint to use your secrets.</h4>
+  </figcaption>
+</figure>
+</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="columns">
+        <div class="column"><span class="footer-title title is-4">Index</span>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Blog</a></li>
+          </ul>
+        </div>
+        <div class="column"><span class="footer-title title is-4">Follow</span>
+          <ul>
+            <li><a href="https://facebook.com/hpoul">Facebook</a></li>
+            <li><a href="https://twitter.com/HerbertPoul">Twitter</a></li>
+            <li><a href="https://github.com/hpoul">GitHub</a></li>
+          </ul>
+        </div>
+        <div class="column"><div class="landingpage-foooter">
+<div class="imprint">
+    <h3>Herbert Poul</h3>
+    <p><span class="developer">Software Deveoper</span> <span class="and">&amp;</span> <span class="ux">UX Designer</span></p>
+    <p class="address">Wenhartgasse 23/3/6
+        1230 Vienna
+        Austria
+        UID-Nr: ATU-65471606</p>
+    <p class="contact">
+        +43 69914488007
+        <a href="mailto:herbert@codeux.design">herbert@codeux.design</a>
+    </p>
+</div>
+</div></div>
+      </div>
+    </footer>
+  </body>
+</html>

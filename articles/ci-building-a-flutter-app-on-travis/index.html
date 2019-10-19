@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>Launching new blog 🎉️ | CodeUX.design e.U. - Herbert Poul</title>
-    <meta content="Launching new blog 🎉️ | CodeUX.design e.U. - Herbert Poul" property="og:title">
+    <title>Building Flutter App on Travis️ | CodeUX.design e.U. - Herbert Poul</title>
+    <meta content="Building Flutter App on Travis️ | CodeUX.design e.U. - Herbert Poul" property="og:title">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/styles/css/main.8384194c22279c9f890bd9e5be4889c15586b7848400466986e07ba8991ff641.css" integrity="sha256-g4QZTCInnJ+JC9nlvkiJwVWGt4SEAEZphuB7qJkf9kE=">
     <script type="text/javascript" src="/script/main.js" async="async"></script>
@@ -10,15 +10,21 @@
     <link href="/favicon.ico" rel="icon" type="image/x-icon">
     <link href="/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16">
     <link href="/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
-    <meta name="description" content="Let's see how long I can keep it up?">
-    <meta content="Let's see how long I can keep it up?" property="og:description">
-    <meta content="Let's see how long I can keep it up?" property="twitter:description">
-    <meta content="https://codeux.design/articles/launching-new-blog/" property="og:url">
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Launching new blog 🎉️","mainEntityOfPage":{"@type":"WebPage","@id":"https://codeux.design/articles/launching-new-blog/"},"image":"https://codeux.design/articles/launching-new-blog/teaser.jpg","wordcount":29,"url":"https://codeux.design/articles/launching-new-blog/","publisher":{"@type":"Organization","name":"CodeUX.design e.U. - Herbert Poul","logo":{"@type":"ImageObject","url":null}},"author":{"@type":"Person","name":"Herbert Poul"},"description":"Let's see how long I can keep it up?"}</script>
-    <meta content="https://codeux.design/articles/launching-new-blog/teaser.jpg" property="og:image">
-    <meta content="2347" property="og:image:width">
-    <meta content="3000" property="og:image:height">
-    <meta content="https://codeux.design/articles/launching-new-blog/teaser.jpg" property="twitter:image">
+    <meta name="description" content="Crash course in best practices building,
+bundling and releasing flutter app on a CI
+">
+    <meta content="Crash course in best practices building,
+bundling and releasing flutter app on a CI
+" property="og:description">
+    <meta content="Crash course in best practices building,
+bundling and releasing flutter app on a CI
+" property="twitter:description">
+    <meta content="https://codeux.design/articles/ci-building-a-flutter-app-on-travis/" property="og:url">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Building Flutter App on Travis️","mainEntityOfPage":{"@type":"WebPage","@id":"https://codeux.design/articles/ci-building-a-flutter-app-on-travis/"},"image":"https://codeux.design/articles/ci-building-a-flutter-app-on-travis/train-821500_1920.jpg","wordcount":134,"url":"https://codeux.design/articles/ci-building-a-flutter-app-on-travis/","publisher":{"@type":"Organization","name":"CodeUX.design e.U. - Herbert Poul","logo":{"@type":"ImageObject","url":null}},"author":{"@type":"Person","name":"Herbert Poul"},"description":"Crash course in best practices building,\nbundling and releasing flutter app on a CI\n"}</script>
+    <meta content="https://codeux.design/articles/ci-building-a-flutter-app-on-travis/train-821500_1920.jpg" property="og:image">
+    <meta content="1920" property="og:image:width">
+    <meta content="1275" property="og:image:height">
+    <meta content="https://codeux.design/articles/ci-building-a-flutter-app-on-travis/train-821500_1920.jpg" property="twitter:image">
     <meta content="article" property="og:type">
   </head>
   <body class="has-navbar-fixed-top has-spaced-navbar-fixed-top blog-content">
@@ -50,19 +56,43 @@
       <div>
         <div class="blog-main-content">
           <div class="hero is-medium has-bg-img">
-            <div class="bg-image" style="background-image: url('/articles/launching-new-blog/teaser.jpg')">x</div>
+            <div class="bg-image" style="background-image: url('/articles/ci-building-a-flutter-app-on-travis/train-821500_1920.jpg')">x</div>
             <div class="hero-body has-text-centered">
-              <h1 class="title">Launching new blog 🎉️</h1>
-              <h2 class="subtitle is-size-6 has-text-weight-bold">15 October 2019</h2>
+              <h1 class="title">CI: Building a Flutter App on Travis️</h1>
+              <h2 class="subtitle is-size-6 has-text-weight-bold">24 October 2019</h2>
             </div>
           </div>
           <div class="section">
             <div class="container">
               <div class="columns">
                 <div class="column">
-                  <div class="content has-drop-caps line-numbers"><p>Finally got around to start a new blog. Obviously
-<a href="https://dc2f.com/">based on dc2f</a> (static page publisher).</p>
-<p>Now the only thing left to do is to write some content. Any suggestions? 😜️</p>
+                  <div class="content has-drop-caps line-numbers"><p>One of the first things when starting a new flutter project for me is making
+sure it is easy to actually deliver it. Especially for open source projects
+this is has some challenges on a public CI/CD like travis or cirrus ci.</p>
+<h1><a href="#overview" id="overview" class="md-anchor">Overview</a></h1>
+<p>The things to consider when building a typical flutter app for android.</p>
+<ul>
+<li>Blackbox: Manage Secrets which might include:
+<ul>
+<li>Upload or signing keys.</li>
+<li>Secret API Keys for services used in the app
+(like Google Analytics, etc.).</li>
+<li>Provisioning Profiles or similar.</li>
+</ul>
+</li>
+<li>Install all app dependencies on the CI.
+<ul>
+<li>Android SDK</li>
+<li>Flutter</li>
+<li>Blackbox</li>
+</ul>
+</li>
+<li><a href="https://github.com/hpoul/git-buildnumber">Synchronize build numbers</a> between build servers and branches.</li>
+</ul>
+<h1><a href="#blackbox-managing-secrets" id="blackbox-managing-secrets" class="md-anchor">Blackbox: Managing Secrets</a></h1>
+<p><a href="https://github.com/StackExchange/blackbox">Blackbox</a> are a collection of scripts based on GPG to store secrets inside
+public git repositories.</p>
+<p><a href="/articles/manage-secrets-flutter-project/">Check out the deep dive in how to use blackbox for your flutter app</a>.</p>
 </div>
                 </div>
               </div>
