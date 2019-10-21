@@ -7,6 +7,8 @@ embed:
       image: 'social-facebookx2.png'
       inlineImage: true
       title: 'Facebook'
+      resize:
+        fillType: NoResize
     gh:
       image: 'social-githubx2.png'
       inlineImage: true

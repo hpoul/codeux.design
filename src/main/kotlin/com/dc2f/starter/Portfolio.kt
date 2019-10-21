@@ -33,73 +33,78 @@ abstract class PortfolioElement : LandingPageElement() {
 fun WebsiteTheme.portfolioRenderer(config: ThemeConfig) {
 
     config.pageRenderer<HerbyIntro> {
-        appendHtmlPartial().header("herby-info") {
-            div("info-column") {
-                div("header-logo") {
-                    img {
-                        alt = "codeux.design"
-                        src = node.introImage.href(context)
-                        width = "505"
-                        height = "68"
+        appendHtmlPartial() {
+            header("herby-info") {
+                div("info-column") {
+                    div("header-logo") {
+                        img {
+                            alt = "codeux.design"
+                            src = node.introImage.href(context)
+                            width = "505"
+                            height = "68"
+                        }
                     }
+                    h1 { +node.intro }
                 }
-                h1 { +node.intro }
-            }
-            div("avatar-column") {
-                div("avatar-herbert-image") { }
+                div("avatar-column") {
+                    div("avatar-herbert-image") { }
+                }
             }
         }
     }
 
     config.pageRenderer<PortfolioElement> {
         val index = ((enclosingNode as LandingPage).children.indexOf(node))
-        appendHtmlPartial().div(
-            "portfolio-project"
-        ) {
-            fun info() {
-                div("portfolio-project-info") {
-                    h2 { +node.title }
-                    h3 {
-                        node.link?.let { a(it) { +node.subTitle } }
-                            ?: +node.subTitle
-                    }
-
-                    // markdown content is always rendered with <p> tag.
-                    richText(context, node.intro)
-
-                    div("portfolio-project-info-code") {
-                        div("info-tags") {
-                            node.codeTags.map { +"#$it " }
+        appendHtmlPartial {
+            div(
+                "portfolio-project"
+            ) {
+                fun info() {
+                    div("portfolio-project-info") {
+                        h2 { +node.title }
+                        h3 {
+                            node.link?.let { a(it) { +node.subTitle } }
+                                ?: +node.subTitle
                         }
-                        p { +node.code }
-                    }
 
-                    div("portfolio-project-info-ux") {
-                        div("info-tags") {
-                            node.uxTags.map { +"#$it " }
+                        // markdown content is always rendered with <p> tag.
+                        richText(context, node.intro)
+
+                        div("portfolio-project-info-code") {
+                            div("info-tags") {
+                                node.codeTags.map { +"#$it " }
+                            }
+                            p { +node.code }
                         }
-                        p { +node.ux }
+
+                        div("portfolio-project-info-ux") {
+                            div("info-tags") {
+                                node.uxTags.map { +"#$it " }
+                            }
+                            p { +node.ux }
+                        }
                     }
                 }
-            }
-            fun mockup() {
-                div("portfolio-project-mockup") {
-                    p { +" " }
-                    img(
-                        context,
-                        node.screenshot,
-                        Resize(height = 400, fillType = FillType.Fit)
-                    ) {
-                        alt = node.title
+
+                fun mockup() {
+                    div("portfolio-project-mockup") {
+                        p { +" " }
+                        img(
+                            context,
+                            node.screenshot,
+                            Resize(height = 400, fillType = FillType.Fit)
+                        ) {
+                            alt = node.title
+                        }
                     }
                 }
-            }
-            if (index % 2 == 0) {
-                classes = classes + "even"
-            }
-            mockup()
-            info()
+                if (index % 2 == 0) {
+                    classes = classes + "even"
+                }
+                mockup()
+                info()
 
+            }
         }
     }
 }
