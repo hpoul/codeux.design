@@ -33,12 +33,12 @@
         <h4>Clients and Partners</h4>
     </div>
     <div class="landing-clients-list">
-        <a href="http://t-mobile.at/" target="_blank">{{ render(content=node.embed.figures.telekom) }}</a>
-        <a href="https://www.benefit-bueroservice.at/" target="_blank">{{ render(content=node.embed.figures.bueroservice) }}</a>
-        <a href="http://tapo-it.at/" target="_blank">{{ render(content=node.embed.figures.tapoIt) }}</a>
-        <a href="http://www.oeamtc.at/" target="_blank">{{ render(content=node.embed.figures.oeamtc) }}</a>
-        <a href="https://www.elsevier.de/" target="_blank">{{ render(content=node.embed.figures.elsevier) }}</a>
-        <a href="https://www.austrianapps.com/" target="_blank">{{ render(content=node.embed.figures.austrianapps) }}</a>
+        <a href="http://t-mobile.at/" target="_blank" rel="noopener">{{ render(content=node.embed.figures.telekom) }}</a>
+        <a href="https://www.benefit-bueroservice.at/" target="_blank" rel="noopener">{{ render(content=node.embed.figures.bueroservice) }}</a>
+        <a href="http://tapo-it.at/" target="_blank" rel="noopener">{{ render(content=node.embed.figures.tapoIt) }}</a>
+        <a href="http://www.oeamtc.at/" target="_blank" rel="noopener">{{ render(content=node.embed.figures.oeamtc) }}</a>
+        <a href="https://www.elsevier.de/" target="_blank" rel="noopener">{{ render(content=node.embed.figures.elsevier) }}</a>
+        <a href="https://www.austrianapps.com/" target="_blank" rel="noopener">{{ render(content=node.embed.figures.austrianapps) }}</a>
     </div>
 </div>
 

@@ -1,7 +1,7 @@
 <div class="landingpage-social navbar-item">
-    <a href="https://twitter.com/HerbertPoul" target="_blank">{{ render(content=node.embed.figures.twtr)}}</a>
-    <a href="https://github.com/hpoul" target="_blank">{{ render(content=node.embed.figures.gh)}}</a>
-    <a href="https://www.facebook.com/hpoul" target="_blank">{{ render(content=node.embed.figures.fb)}}</a>
+    <a href="https://twitter.com/HerbertPoul" target="_blank" rel="noopener">{{ render(content=node.embed.figures.twtr)}}</a>
+    <a href="https://github.com/hpoul" target="_blank" rel="noopener">{{ render(content=node.embed.figures.gh)}}</a>
+    <a href="https://www.facebook.com/hpoul" target="_blank" rel="noopener">{{ render(content=node.embed.figures.fb)}}</a>
     <!--
     <a href="https://twitter.com/HerbertPoul" target="_blank"><img src="{{ render(content=node.embed.figures.twtr)}}" width="30" height="26" /></a>
     <a href="https://github.com/hpoul" target="_blank"><img src="{{ render(content=node.embed.figures.gh)}}" width="28" height="28" /></a>
