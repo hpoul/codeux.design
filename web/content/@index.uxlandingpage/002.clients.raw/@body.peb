@@ -5,7 +5,7 @@
     </div>
     <div class="avatar-column">
         <img src="{{ render(content=rootNode.embed.figures.avatarCode.image.hrefRenderable) }}" alt="Code/Development" width="84" height="83" />
-        <h2>Code &amp;<br /> Development</h2>
+        <h2>Code &amp;amp;<br /> Development</h2>
     </div>
 </div>
 
@@ -23,7 +23,8 @@
     <div class="info-column">
         <p><img src="{{ render(content=node.embed.figures.signature.image.hrefRenderable) }}" alt="Herbert Poul Signature" width="176" height="53" /></p>
         <h3>So what about you?</h3>
-        <a href="mailto:herbert@codeux.design" class="cta">Make my project successful</a>
+        <a href="mailto:herbert@codeux.design" class="cta is-hidden-tablet">Contact</a>
+        <a href="mailto:herbert@codeux.design" class="cta is-hidden-mobile">Make my project successful</a>
     </div>
 </div>
 

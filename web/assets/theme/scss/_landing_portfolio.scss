@@ -3,7 +3,7 @@
 .portfolio-project {
   //@include row;
   @extend .columns;
-  @extend .is-gapless;
+  //@extend .is-gapless;
 
   &:not(:last-child) {
     margin-bottom: 0;
@@ -21,6 +21,11 @@
     text-align: center;
     padding-top: 64px;
     padding-bottom: 64px;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
 
     img {
       max-width: 100%;

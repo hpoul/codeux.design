@@ -11,6 +11,7 @@ import kotlinx.html.*
 abstract class HerbyIntro : LandingPageElement() {
     abstract val intro: String
     abstract val introImage: ImageAsset
+    abstract val profileImage: ImageAsset
 }
 
 
@@ -47,7 +48,14 @@ fun WebsiteTheme.portfolioRenderer(config: ThemeConfig) {
                     h1 { +node.intro }
                 }
                 div("avatar-column") {
-                    div("avatar-herbert-image") { }
+                    div("avatar-herbert-image") {
+                        imageAsPicture(
+                            context,
+                            node.profileImage,
+                            "Herbert Profile Image",
+                            resize = Resize(width = 400, height = 400, fillType = FillType.Cover)
+                        )
+                    }
                 }
             }
         }

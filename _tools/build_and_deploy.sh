@@ -15,6 +15,7 @@ DC2F_ENV=production ./dc2f.sh build
 
 ./_tools/_deploy_web_sphene_net.sh
 
+rsync --progress -a --delete public/ docker-host.tapo.at:dev/web.poul.at/data/sites/newpage.codeux.design/
 
 #echo WARNING WARNING
 #echo WARNING WARNING

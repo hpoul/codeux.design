@@ -56,15 +56,13 @@ a {
 
 
 .avatar-herbert-image {
-  background-image: url('#{$imageBaseDir}/avatar/herbert_profile_picture_800.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   position: relative;
-  border-radius: 50%;
-  width: mydip(124);
-  height: mydip(124);
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.50), 0 1px 2px 0 rgba(0,0,0,0.50);
+  img {
+    border-radius: 50%;
+    width: mydip(124);
+    height: mydip(124);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.50), 0 1px 2px 0 rgba(0, 0, 0, 0.50);
+  }
 }
 
 .herby-info, .competence-field, .competence-footer {
