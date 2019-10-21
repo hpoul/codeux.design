@@ -2,3 +2,10 @@ embed:
   figures:
     textlogo:
       image: 'textlogo.svg'
+    profileImage:
+      image: 'herbert_profile_picture_800.jpg'
+      inlineImage: true
+      resize:
+        width: 400
+        height: 400
+        fillType: Cover

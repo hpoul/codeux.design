@@ -1,7 +1,9 @@
 <div class="blog-sidebar">
     <div class="column has-text-centered">
         <div class="avatar-herbert-image-wrapper">
-            <div class="avatar-herbert-image-dark"></div>
+            <div class="avatar-herbert-image-dark">
+                {{ render(content=node.embed.figures.profileImage) }}
+            </div>
         </div>
 
         <img class="logotext" src="{{ render(content=node.embed.figures.textlogo.image.hrefRenderable) }}" alt="codeux.design" />

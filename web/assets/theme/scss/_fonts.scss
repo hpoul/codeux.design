@@ -7,6 +7,7 @@ $fontBaseDir: '../..';
   font-family: 'Pacifico';
   font-style: normal;
   font-weight: 400;
+  font-display: fallback;
   src: url("#{$fontBaseDir}/fonts/pacifico-v9-latin-regular.eot"); /* IE9 Compat Modes */
   src: local('Pacifico Regular'), local('Pacifico-Regular'),
   url("#{$fontBaseDir}/fonts/pacifico-v9-latin-regular.eot?#iefix") format('embedded-opentype'), /* IE6-IE8 */
@@ -25,6 +26,7 @@ $fontBaseDir: '../..';
   font-family: 'Rubik';
   font-style: normal;
   font-weight: 300;
+  font-display: fallback;
   src: url('#{$fontBaseDir}/fonts/rubik-v4-latin-300.eot'); /* IE9 Compat Modes */
   src: local('Rubik Light'), local('Rubik-Light'),
   url('#{$fontBaseDir}/fonts/rubik-v4-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -37,6 +39,7 @@ $fontBaseDir: '../..';
   font-family: 'Rubik';
   font-style: normal;
   font-weight: 400;
+  font-display: fallback;
   src: url('#{$fontBaseDir}/fonts/rubik-v4-latin-regular.eot'); /* IE9 Compat Modes */
   src: local('Rubik'), local('Rubik-Regular'),
   url('#{$fontBaseDir}/fonts/rubik-v4-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -49,6 +52,7 @@ $fontBaseDir: '../..';
   font-family: 'Rubik';
   font-style: normal;
   font-weight: 500;
+  font-display: fallback;
   src: url('#{$fontBaseDir}/fonts/rubik-v4-latin-500.eot'); /* IE9 Compat Modes */
   src: local('Rubik Medium'), local('Rubik-Medium'),
   url('#{$fontBaseDir}/fonts/rubik-v4-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -61,6 +65,7 @@ $fontBaseDir: '../..';
   font-family: 'Rubik';
   font-style: normal;
   font-weight: 700;
+  font-display: fallback;
   src: url('#{$fontBaseDir}/fonts/rubik-v4-latin-700.eot'); /* IE9 Compat Modes */
   src: local('Rubik Bold'), local('Rubik-Bold'),
   url('#{$fontBaseDir}/fonts/rubik-v4-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
