@@ -11,6 +11,16 @@ to build flutter apps on a CI.
 3. Building release builds on Travis (Android) and Cirrus CI. (iOS)
    (Coming soon)
 
+# Outline
+
+In this article you will get a quick overview on how to manage secrets
+you usually encounter in flutter apps:
+
+1. First a quick explanation of Blackbox, a tool we will use to encrypt
+   all secrets.
+2. Signing keys for android and how to configure gradle.
+3. Provisioning profiles for iOS with fastlane match.
+
 # Blackbox Overview
 
 It is generally not a good idea to add plaintext API keys, passwords, etc.
@@ -248,3 +258,71 @@ If you require it during production you can also set the entrypoint in
 Android Studio:
 
 {{render content=node.embed.figures.entryPoint /}}
+
+# iOS: Manage Provisioning Profiles
+
+[Fastlane match](https://docs.fastlane.tools/actions/match/) is a convenient 
+way to share provisioning profiles with your team or different CI environments.
+
+It uses a remote git repository (or google cloud storage) to securely store
+provisioning profiles and install them using `fastlane match`.
+
+My recommendation is to store the fastlane configuration inside your `ios`
+project but reference your secrets inside `_tools/secrets` to keep all
+secrets in one place.
+
+Follow the [setup instructions on fastlane's website][fastlane-setup] the 
+"secret" configuration basically consists of the following variables:
+
+**_tools/secrets/fastlane_match_password**
+
+```bash
+export MATCH_KEYCHAIN_NAME="mykeychainname"
+export MATCH_PASSWORD="fastlaneMatchEncryptionPassword"
+export FASTLANE_PASSWORD="itunes connect store password"
+```
+
+and don't forget it to register it with blackbox:
+
+```console
+bash$ blackbox_register_new_file _tools/fastlane_match_password
+========== CREATED: _tools/fastlane_match_password.gpg
+========== UPDATING VCS: DONE
+Local repo updated.  Please push when ready.
+    git push
+```
+
+## SSH Access
+
+For fastlane to access the git repository where you store the provisioning profile
+you should create a new private key - for example on GitHub or GitLab you can
+register deploy keys. So if you do not yet have a ssh key you can create a new 
+one using
+
+```console
+bash$ ssh-keygen -f _tools/fastlane_match_certificates_id_rsa
+  Generating public/private rsa key pair.
+  Enter passphrase (empty for no passphrase): 
+  Enter same passphrase again: 
+  Your identification has been saved in _tools/fastlane_match_certificates_id_rsa.
+  Your public key has been saved in _tools/fastlane_match_certificates_id_rsa.pub
+bash$ blackbox_register_new_file _tools/fastlane_match_certificates_id_rsa
+```
+
+## Using your secrets with fastlane
+
+Now if you are want to actually access the repository to install all 
+provisioning profiles (for example on a CI server) you can simply import the 
+private key, source the password file and launch `fastlane match`:
+
+```bash
+cat _tools/secrets/fastlane_match_certificates_id_rsa | ssh-add -
+source _tools/secrets/fastlane_match_password
+fastlane match
+```
+
+More on how to create a full CI release cycle for your flutter app in a later
+article 😉️
+
+[fastlane-setup]: (https://docs.fastlane.tools/actions/match/#usage)
+
