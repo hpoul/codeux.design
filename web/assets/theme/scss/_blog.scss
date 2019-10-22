@@ -24,6 +24,13 @@
     //transform: translateZ(-1px) scale(1.5);
     background-attachment: fixed;
 
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
     &::before {
       content: ' ';
       opacity: 0.5;

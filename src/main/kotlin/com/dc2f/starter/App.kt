@@ -161,8 +161,14 @@ fun WebsiteTheme.themeOverrides(config: ThemeConfig) {
             div("hero is-medium has-bg-img") {
                 div("bg-image") {
                     // TODO image resize and blur
-                    style = "background-image: url('${node.teaser.href(context)}')"
-                    +"x"
+                    imageAsPicture(
+                        context,
+                        node.teaser,
+                        "Teaser ${node.title}",
+                        resize = Resize(1000, 1000, FillType.Fit)
+                    )
+//                    style = "background-image: url('${node.teaser.href(context)}')"
+//                    +"x"
                 }
                 div("hero-body has-text-centered") {
                     h1("title") { +node.title }
