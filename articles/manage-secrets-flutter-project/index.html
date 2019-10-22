@@ -5,7 +5,7 @@
     <meta content="Manage secrets in a flutter project with Blackbox | CodeUX.design e.U. - Herbert Poul" property="og:title">
     <meta charset="UTF-8">
     <link rel="canonical" href="https://codeux.design/articles/manage-secrets-flutter-project/">
-    <link rel="stylesheet" href="/styles/css/main.8c9fa9d112cbb923f5e5add1102dc52cc125e6f44fa3c2cc483a54162b201d5d.css" integrity="sha256-jJ+p0RLLuSP15a3REC3FLMEl5vRPo8LMSDpUFisgHV0=">
+    <link rel="stylesheet" href="/styles/css/main.0112d91e44c54acf7e18bae015e46f62495d1722f11978cb2f093d7154e0a288.css" integrity="sha256-ARLZHkTFSs9+GLrgFeRvYkldFyLxGXjLLwk9cVTgoog=">
     <script type="text/javascript" src="/script/main.js" async="async"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/favicon.ico" rel="icon" type="image/x-icon">
@@ -21,7 +21,7 @@ repository you are using for your flutter app.
 repository you are using for your flutter app.
 " property="twitter:description">
     <meta content="https://codeux.design/articles/manage-secrets-flutter-project/" property="og:url">
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Manage secrets in a flutter project with Blackbox","mainEntityOfPage":{"@type":"WebPage","@id":"https://codeux.design/articles/manage-secrets-flutter-project/"},"image":"https://codeux.design/articles/manage-secrets-flutter-project/door-1587863_1920.jpg","wordcount":864,"url":"https://codeux.design/articles/manage-secrets-flutter-project/","publisher":{"@type":"Organization","name":"CodeUX.design e.U. - Herbert Poul","logo":{"@type":"ImageObject","url":null}},"author":{"@type":"Person","name":"Herbert Poul"},"description":"Securely store secrets like secret keys or API secrets in a public git\nrepository you are using for your flutter app.\n"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Manage secrets in a flutter project with Blackbox","mainEntityOfPage":{"@type":"WebPage","@id":"https://codeux.design/articles/manage-secrets-flutter-project/"},"image":"https://codeux.design/articles/manage-secrets-flutter-project/door-1587863_1920.jpg","wordcount":1197,"url":"https://codeux.design/articles/manage-secrets-flutter-project/","publisher":{"@type":"Organization","name":"CodeUX.design e.U. - Herbert Poul","logo":{"@type":"ImageObject","url":null}},"author":{"@type":"Person","name":"Herbert Poul"},"description":"Securely store secrets like secret keys or API secrets in a public git\nrepository you are using for your flutter app.\n"}</script>
     <meta content="https://codeux.design/articles/manage-secrets-flutter-project/door-1587863_1920.jpg" property="og:image">
     <meta content="1920" property="og:image:width">
     <meta content="1280" property="og:image:height">
@@ -100,6 +100,15 @@ to build flutter apps on a CI.</p>
 <li>Using Blackbox on a CI (Coming soon)</li>
 <li>Building release builds on Travis (Android) and Cirrus CI. (iOS)
 (Coming soon)</li>
+</ol>
+<h1><a href="#outline" id="outline" class="md-anchor">Outline</a></h1>
+<p>In this article you will get a quick overview on how to manage secrets
+you usually encounter in flutter apps:</p>
+<ol>
+<li>First a quick explanation of Blackbox, a tool we will use to encrypt
+all secrets.</li>
+<li>Signing keys for android and how to configure gradle.</li>
+<li>Provisioning profiles for iOS with fastlane match.</li>
 </ol>
 <h1><a href="#blackbox-overview" id="blackbox-overview" class="md-anchor">Blackbox Overview</a></h1>
 <p>It is generally not a good idea to add plaintext API keys, passwords, etc.
@@ -295,6 +304,51 @@ Android Studio:</p>
       <h4>Configure Dart Entrypoint to use your secrets.</h4>
     </figcaption>
   </figure>
+<h1><a href="#ios-manage-provisioning-profiles" id="ios-manage-provisioning-profiles" class="md-anchor">iOS: Manage Provisioning Profiles</a></h1>
+<p><a href="https://docs.fastlane.tools/actions/match/">Fastlane match</a> is a convenient
+way to share provisioning profiles with your team or different CI environments.</p>
+<p>It uses a remote git repository (or google cloud storage) to securely store
+provisioning profiles and install them using <code>fastlane match</code>.</p>
+<p>My recommendation is to store the fastlane configuration inside your <code>ios</code>
+project but reference your secrets inside <code>_tools/secrets</code> to keep all
+secrets in one place.</p>
+<p>Follow the <a href="(https://docs.fastlane.tools/actions/match/#usage)">setup instructions on fastlane&rsquo;s website</a> the
+&ldquo;secret&rdquo; configuration basically consists of the following variables:</p>
+<p><strong>_tools/secrets/fastlane_match_password</strong></p>
+<pre><code class="language-bash">export MATCH_KEYCHAIN_NAME=&quot;mykeychainname&quot;
+export MATCH_PASSWORD=&quot;fastlaneMatchEncryptionPassword&quot;
+export FASTLANE_PASSWORD=&quot;itunes connect store password&quot;
+</code></pre>
+<p>and don&rsquo;t forget it to register it with blackbox:</p>
+<pre><code class="language-console">bash$ blackbox_register_new_file _tools/fastlane_match_password
+========== CREATED: _tools/fastlane_match_password.gpg
+========== UPDATING VCS: DONE
+Local repo updated.  Please push when ready.
+    git push
+</code></pre>
+<h2><a href="#ssh-access" id="ssh-access" class="md-anchor">SSH Access</a></h2>
+<p>For fastlane to access the git repository where you store the provisioning profile
+you should create a new private key - for example on GitHub or GitLab you can
+register deploy keys. So if you do not yet have a ssh key you can create a new
+one using</p>
+<pre><code class="language-console">bash$ ssh-keygen -f _tools/fastlane_match_certificates_id_rsa
+  Generating public/private rsa key pair.
+  Enter passphrase (empty for no passphrase): 
+  Enter same passphrase again: 
+  Your identification has been saved in _tools/fastlane_match_certificates_id_rsa.
+  Your public key has been saved in _tools/fastlane_match_certificates_id_rsa.pub
+bash$ blackbox_register_new_file _tools/fastlane_match_certificates_id_rsa
+</code></pre>
+<h2><a href="#using-your-secrets-with-fastlane" id="using-your-secrets-with-fastlane" class="md-anchor">Using your secrets with fastlane</a></h2>
+<p>Now if you are want to actually access the repository to install all
+provisioning profiles (for example on a CI server) you can simply import the
+private key, source the password file and launch <code>fastlane match</code>:</p>
+<pre><code class="language-bash">cat _tools/secrets/fastlane_match_certificates_id_rsa | ssh-add -
+source _tools/secrets/fastlane_match_password
+fastlane match
+</code></pre>
+<p>More on how to create a full CI release cycle for your flutter app in a later
+article 😉️</p>
 </div>
                 </div>
               </div>
