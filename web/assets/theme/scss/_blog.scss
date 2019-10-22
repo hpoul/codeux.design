@@ -57,6 +57,17 @@
 $light-text-color: #cecece;
 $blog-width: 800px;
 
+.subscribe-button {
+  text-align: center;
+  p {
+    margin-top: 8px;
+    color: #999;
+    font-size: smaller;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
 @include desktop {
   .blog-content {
@@ -69,14 +80,11 @@ $blog-width: 800px;
     }
 
     .blog-sidebar {
-      &::before {
-        content: ' ';
+      &::before, .sidebar-bg-image {
         top: 0;
         left: 0;
         bottom: 0;
         right: 0;
-        background-image: url("#{$imageBaseDir}/P6080442-Pano.jpg");
-        background-size: cover;
         filter: blur(2px) grayscale(0.6);
         position: absolute;
         opacity: 0.3;

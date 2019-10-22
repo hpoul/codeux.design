@@ -3,10 +3,18 @@ integrated into the app. These might include API Keys or private keys
 for services like Firebase, Analytics, etc. Or provisioning profiles for 
 iOS.
 
+This is the first part of what will become three parts on how
+to build flutter apps on a CI.
+
+1. Setting up Blackbox & Managing Signing Keys (This article)
+2. Using Blackbox on a CI (Coming soon)
+3. Building release builds on Travis (Android) and Cirrus CI. (iOS)
+   (Coming soon)
+
 # Blackbox Overview
 
 It is generally not a good idea to add plaintext API keys, passwords, etc.
-to your git repository. But it is usually very convenient. This is where
+to your git repository. But it is very convenient. This is where
 [Blackbox](https://github.com/StackExchange/blackbox) comes in and allows
 you to store encrypted secrets along side your flutter app.
 

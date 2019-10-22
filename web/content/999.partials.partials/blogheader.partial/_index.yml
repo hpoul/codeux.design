@@ -9,3 +9,10 @@ embed:
         width: 400
         height: 400
         fillType: Cover
+    bgImage:
+      image: 'P6080442-Pano.jpg'
+      inlineImage: true
+      resize:
+        height: 1000
+        fillType: Fit
+

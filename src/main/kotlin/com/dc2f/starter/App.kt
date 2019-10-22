@@ -73,6 +73,21 @@ class WebsiteTheme : BaseTheme() {
 //                            +"this must be sub stuff"
 //                        }
 //                    }
+                    div("subscribe-button") {
+                        a(
+                            href = "https://mailchi.mp/f62fd35b6fb3/articles-subscribe",
+                            target = "_blank",
+                            classes = "button is-primary is-large"
+                        ) {
+                            attributes["rel"] = "noopener"
+                            +"Subscribe to new articles"
+                        }
+                        p {
+                            +("Be the first to get notified for new articles " +
+                                "about Flutter, Dart or mobile App Development" +
+                                " in general.")
+                        }
+                    }
                 } else {
                     mainContent()
                 }

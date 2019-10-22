@@ -1,4 +1,7 @@
 <div class="blog-sidebar">
+    <div class="sidebar-bg-image">
+        {{ render(content=node.embed.figures.bgImage) }}
+    </div>
     <div class="column has-text-centered">
         <div class="avatar-herbert-image-wrapper">
             <div class="avatar-herbert-image-dark">
