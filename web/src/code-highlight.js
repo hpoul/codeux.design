@@ -4,12 +4,14 @@ import shell from 'highlight.js/lib/languages/shell';
 import bash from 'highlight.js/lib/languages/bash';
 import dart from 'highlight.js/lib/languages/dart';
 import kotlin from 'highlight.js/lib/languages/kotlin';
+import yaml from 'highlight.js/lib/languages/yaml';
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('shell', shell);
 hljs.registerLanguage('bash', bash);
 hljs.registerLanguage('dart', dart);
 hljs.registerLanguage('kotlin', kotlin);
+hljs.registerLanguage('yaml', yaml);
 
 import 'highlight.js/styles/atom-one-light.css';
 

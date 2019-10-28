@@ -35,6 +35,7 @@ embed:
     avatarUx:
       image: ux.svg
 headInject: |
+  <link rel="alternate" type="application/rss+xml" title="Newsfeed - codeux.design/articles"  href="https://codeux.design/articles/feed-rss.xml" />
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-91100035-1"></script>
   <script>

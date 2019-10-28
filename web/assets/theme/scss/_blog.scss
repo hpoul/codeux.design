@@ -198,8 +198,8 @@ a.md-anchor {
 .md-anchor::before {
   content: '';
   display: block;
-  margin-top: -9px;
-  padding-top: 9px;
+  margin-top: -64px;
+  padding-top: 64px;
 }
 
 .md-anchor:target::before {
@@ -207,4 +207,13 @@ a.md-anchor {
   margin-top: -64px;
   color: inherit;
   content: ' ';
+}
+
+.md-toc {
+  ol, ul {
+    margin-top: 0.25em;
+  }
+  > li > ol > li {
+    list-style-type: lower-alpha;
+  }
 }

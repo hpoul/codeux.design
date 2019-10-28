@@ -1,0 +1,15 @@
+author: 'Herbert Poul'
+date: '2019-10-29 17:41'
+categories:
+- 'Flutter'
+seo:
+  title: 'Secrets with Blackbox in a Continuous Integration service'
+  description: |
+    How to use blackbox in a CI server like Travis or GitLab CI.
+title: 'Secrets with Blackbox in a Continuous Integration service'
+teaser: 'padlock-166882_1920.jpg'
+embed:
+  figures:
+    gitlab:
+      image: gitlab-secret-variable-file-screenshot.png
+      title: GitLab Secret Variable File
