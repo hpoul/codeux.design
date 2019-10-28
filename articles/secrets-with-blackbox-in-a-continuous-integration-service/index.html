@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Secrets with Blackbox in a Continuous Integration service | CodeUX.design e.U. - Herbert Poul</title>
+    <meta content="Secrets with Blackbox in a Continuous Integration service | CodeUX.design e.U. - Herbert Poul" property="og:title">
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://codeux.design/articles/secrets-with-blackbox-in-a-continuous-integration-service/">
+    <link rel="stylesheet" href="/styles/css/main.57f94c3267e1c46c5993713e698535664bb5f7ce4f0dc7273647b63665fd20d4.css" integrity="sha256-V/lMMmfhxGxZk3E+aYU1Zku1985PDccnNke2NmX9INQ=">
+    <script type="text/javascript" src="/script/main.js" async="async"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/favicon.ico" rel="icon" type="image/x-icon">
+    <link href="/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16">
+    <link href="/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+    <meta name="description" content="How to use blackbox in a CI server like Travis or GitLab CI.
+">
+    <meta content="How to use blackbox in a CI server like Travis or GitLab CI.
+" property="og:description">
+    <meta content="How to use blackbox in a CI server like Travis or GitLab CI.
+" property="twitter:description">
+    <meta content="https://codeux.design/articles/secrets-with-blackbox-in-a-continuous-integration-service/" property="og:url">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Secrets with Blackbox in a Continuous Integration service","mainEntityOfPage":{"@type":"WebPage","@id":"https://codeux.design/articles/secrets-with-blackbox-in-a-continuous-integration-service/"},"image":"https://codeux.design/articles/secrets-with-blackbox-in-a-continuous-integration-service/padlock-166882_1920.jpg","wordcount":950,"url":"https://codeux.design/articles/secrets-with-blackbox-in-a-continuous-integration-service/","publisher":{"@type":"Organization","name":"CodeUX.design e.U. - Herbert Poul","logo":{"@type":"ImageObject","url":null}},"author":{"@type":"Person","name":"Herbert Poul"},"description":"How to use blackbox in a CI server like Travis or GitLab CI.\n"}</script>
+    <meta content="https://codeux.design/articles/secrets-with-blackbox-in-a-continuous-integration-service/padlock-166882_1920.jpg" property="og:image">
+    <meta content="1920" property="og:image:width">
+    <meta content="1280" property="og:image:height">
+    <meta content="https://codeux.design/articles/secrets-with-blackbox-in-a-continuous-integration-service/padlock-166882_1920.jpg" property="twitter:image">
+    <meta content="article" property="og:type">
+<link rel="alternate" type="application/rss+xml" title="Newsfeed - codeux.design/articles"  href="https://codeux.design/articles/feed-rss.xml" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-91100035-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-91100035-1');
+</script>
+  </head>
+  <body class="has-navbar-fixed-top has-spaced-navbar-fixed-top blog-content">
+    <nav class="" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand"><a class="navbar-burger" role="button" data-target="main-menu" aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span></a></div>
+        <div class="navbar-menu" id="main-menu">
+          <div class="navbar-end"><a href="/" class="navbar-item" title="Home">Home</a><a href="/articles/" class="navbar-item is-active" title="Blog">Blog</a></div>
+        </div>
+      </div>
+    </nav>
+<div class="blog-sidebar">
+    <div class="sidebar-bg-image">
+        <picture><source srcset="/partials/blogheader/Fit_2147483647x1000_webp_P6080442-Pano.jpg.webp" type="image/webp"></source><img alt="" src="/partials/blogheader/Fit_2147483647x1000_orig_P6080442-Pano.jpg" width="649" height="1000"></picture>    </div>
+    <div class="column has-text-centered">
+        <div class="avatar-herbert-image-wrapper">
+            <div class="avatar-herbert-image-dark">
+                <picture><source srcset="/partials/blogheader/Cover_400x400_webp_herbert_profile_picture_800.jpg.webp" type="image/webp"></source><img alt="" src="/partials/blogheader/Cover_400x400_orig_herbert_profile_picture_800.jpg" width="400" height="400"></picture>            </div>
+        </div>
+
+        <img class="logotext" src="/partials/blogheader/textlogo.svg" alt="codeux.design" />
+        <hr />
+        <h3>Flutter App Developer and UX Designer</h3>
+        <hr />
+        <div>
+            <a href="/" class="button is-outlined is-rounded">Home</a>
+            <a href="/articles/" class="button is-outlined is-rounded">Blog</a>
+            <a href="mailto:herbert@codeux.design" class="button is-outlined is-rounded">Contact</a>
+        </div>
+    </div>
+</div>    <main>
+      <div>
+        <div class="blog-main-content">
+          <div class="hero is-medium has-bg-img">
+            <div class="bg-image"><picture><source srcset="/articles/secrets-with-blackbox-in-a-continuous-integration-service/Fit_1000x1000_webp_padlock-166882_1920.jpg.webp" type="image/webp"></source><img alt="Teaser Secrets with Blackbox in a Continuous Integration service" src="/articles/secrets-with-blackbox-in-a-continuous-integration-service/Fit_1000x1000_orig_padlock-166882_1920.jpg" width="1000" height="667"></picture></div>
+            <div class="hero-body has-text-centered">
+              <h1 class="title">Secrets with Blackbox in a Continuous Integration service</h1>
+              <h2 class="subtitle is-size-6 has-text-weight-bold">29 October 2019</h2>
+            </div>
+          </div>
+          <div class="section">
+            <div class="container">
+              <div class="columns">
+                <div class="column">
+                  <div class="content has-drop-caps line-numbers"><svg xmlns="http://www.w3.org/2000/svg" class="adm-hidden">
+<symbol id="adm-note">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<g fill="currentColor">
+<path d="m15.4 5h4.5v2.7h-4.5z" transform="matrix(-.7071 -.7071 .7071 -.7071 25.7188 23.288)"/>
+<path d="m13.9 7 3.1 3.1-9.5 9.6-3.5.3.3-3.5z"/>
+</g>
+</svg>
+</symbol>
+<symbol id="adm-faq">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m20.4 12.2c0 4.5-3.7 8.2-8.2 8.2s-8.2-3.7-8.2-8.2 3.7-8.2 8.2-8.2 8.2 3.7 8.2 8.2zm-4.2-2.9c-.1-1.3-1-2.5-2.3-2.9-.8-.2-1.6-.1-2.4.1-.6.1-1.5.2-1.8.6-.4.5.2 1 .6 1.3.6.4 1.1-.1 1.8-.3s3-.7 2.4.8c-.5 1.1-2 1.9-3 2.6-.4.3-.9.6-1.2 1-.5.6.1 1 .7 1.4.4.3.9.2 1.2-.1.5-.5 1-.9 1.6-1.3 1.1-.7 2.5-1.6 2.4-3.2-.2-1.3 0 .7 0 0zm-2.8 6.8c-.3-.5-1.3-1.3-1.9-1.1-.4.1-.4.4-.5.8-.1.2-.4.6-.3.8.1.4 1.5 1.3 1.9 1 .1-.1.9-1.4.8-1.5 0-.1.1.1 0 0z" fill="currentColor"/>
+</svg>
+</symbol>
+<symbol id="adm-warning">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m3.1 18.5 8.1-14c.4-.7 1.4-.7 1.8 0l8.1 14c.4.7-.1 1.6-.9 1.6h-16.1c-.9 0-1.4-.9-1-1.6zm10.6-4.3c0-.1 0-.2 0-.2v-4.6c0-.4 0-.6 0-.6-.1-.1-.3-.2-.7-.3s-.7-.1-1-.1c-.1 0-.2 0-.3 0-.3.1-.5.2-.5.4v4.2s-.1.1-.2.4-.1.4 0 .5c.3.2.7.4 1.2.6s.9.3 1.2.3h.2c.2 0 .3-.2.3-.5-.2 0-.2-.1-.2-.1zm-.8 1.4c-.5-.2-.9-.2-1.2-.2s-.4.1-.5.4v.9c0 .2 0 .3-.1.4-.1.2-.2.3-.1.4s.5.3 1.2.5c.6.2 1 .2 1.1.2.2 0 .4-.1.4-.3s.1-.4.1-.7c0-.1 0-.3.1-.7 0-.3 0-.5 0-.5-.2-.1-.5-.2-1-.4z" fill="currentColor"/>
+</svg>
+</symbol>
+<symbol id="adm-danger">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m8.5 4h8.5l-4 8h3l-7.1 9.5 1.6-8.5h-1.5z" fill="currentColor"/>
+</svg>
+</symbol>
+</svg>
+<p>When storing your secrets in your git repository using blackbox you need
+a way to easily decrypt them on your CI. This can be a bit combersome if
+you require a gpg key. In this article we look at ways on how to do this
+on GitLab CI, Travis CI and CirrusCI</p>
+<ol>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#creating-a-role-account">Creating a &ldquo;role account&rdquo;</a></li>
+<li><a href="#configure-your-ci">Configure your CI</a>
+<ol>
+<li><a href="#travis-ci">Travis CI</a></li>
+<li><a href="#cirrus-ci">Cirrus CI</a></li>
+<li><a href="#gitlab-ci">GitLab CI</a></li>
+</ol>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+<h1 id="overview"><a href="#overview" id="overview" class="md-anchor">Overview</a></h1>
+<p>In a previous article we explored how to
+<a href="../manage-secrets-flutter-project">set up blackbox for your git repository</a> for
+your flutter project. Now let&rsquo;s look how to actually use them in your favorite
+CI.</p>
+<p>To avoid having to set up a whole OpenGPG environment and import keys I
+have created a <a href="https://github.com/hpoul/blackbox/tree/golang-poc">fork of the go implementation of blackbox</a> which implements
+the command <code>cipostdeploy</code> which simply takes a private key and decrypts
+all registered blackbox files in your repository.</p>
+<p>We can easily make use of it in a CI by downloading the required
+<a href="https://github.com/hpoul/blackbox/releases/tag/golang-v0.1-cipostdeploy">binary from the github release</a>.</p>
+<h1 id="creating-a-role-account"><a href="#creating-a-role-account" id="creating-a-role-account" class="md-anchor">Creating a &ldquo;role account&rdquo;</a></h1>
+<p>A role account is simply a private key you can register as &ldquo;admin&rdquo; in
+your blackbox repository which is not a real user. But due to how blackbox
+is set up you still need a full public/private key pair which is associated
+with an email address.</p>
+<p>My fork contains a <a href="https://github.com/hpoul/blackbox/blob/create_role_account/bin/blackbox_create_role_account">script which makes this very easy called
+blackbox_create_role_account</a> so I would recommend you either check out
+the fork or simply download the script into your <code>$PATH</code>. You can also
+<a href="https://github.com/StackExchange/blackbox#set-up-automated-users-or-role-accounts">follow the procedure manually</a>.</p>
+<p>With the <code>blackbox_create_role_account</code> simply create one &ldquo;account&rdquo; for every
+CI you intend to use, to make it easy to remove those accounts again.</p>
+<pre><code class="language-console">bash$ blackbox_create_role_account travis-ci@roleaccount
+</code></pre>
+<p>This will ask you for your password and then reencrypt all files again. You
+should see the added role account when listing all admins:</p>
+<pre><code class="language-console">bash$ blackbox_listadmins 
+authpass-ci-cirrus-key@codeux.design
+herbert@poul.at
+travis-ci@roleaccount
+</code></pre>
+<p>By default the private key will be located in <code>/var/tmp/SECRET_KEY.txt</code>
+make sure to delete this key as soon as you has configured it in your CI!</p>
+<p>If you lose the key, nothing to worry about, simply remove the admin again.</p>
+<pre><code class="language-console">bash$ blackbox_removeadmin travis-ci@roleaccount
+bash$ blackbox_update_all_files
+</code></pre>
+<div class="adm-block adm-danger">
+<div class="adm-heading">
+<svg class="adm-icon"><use xlink:href="#adm-danger" /></svg><span>Note!</span>
+</div>
+<div class="adm-body">
+<p>If one of your secret keys is exposed in a leak for
+a public git repository, removing the admin from the current version will
+do no good. As an attacker could simply clone a old version of your repository
+and read those secrets. So in the worst case you have to delete your
+old encrypted files from the complete git history. Which, for open source
+projects cloned and forked is pretty much impossible. So you still have to
+protect your private keys!</p>
+</div>
+</div>
+<h1 id="configure-your-ci"><a href="#configure-your-ci" id="configure-your-ci" class="md-anchor">Configure your CI</a></h1>
+<h2 id="travis-ci"><a href="#travis-ci" id="travis-ci" class="md-anchor">Travis CI</a></h2>
+<p>First create a new role account for travis as outlined in the previous chapter.</p>
+<p>Unfortunately for travis we can&rsquo;t simply use an encrypted variable, because
+the private key is too large. So we have to use <strong>encrypted files</strong>.</p>
+<div class="adm-block adm-warning">
+<div class="adm-body">
+<p>Travis only allows a single encrypted file. But this shouldn&rsquo;t be a problem,
+simply store the private key for blackbox as a travis encrypted file,
+and everything else inside blackbox.</p>
+</div>
+</div>
+<pre><code class="language-console">mv /var/tmp/SECRET_KEY.txt .travis.blackbox.key
+travis encrypt-file --pro .travis.blackbox.key --add
+</code></pre>
+<div class="adm-block adm-note">
+<div class="adm-heading">
+<svg class="adm-icon"><use xlink:href="#adm-note" /></svg><span>Arguments</span>
+</div>
+<div class="adm-body">
+<ul>
+<li><code>--pro</code> use travis.com (instead of travis.org)</li>
+<li><code>--add</code> Immediately save to <code>.travis.yml</code></li>
+</ul>
+</div>
+</div>
+<p>The above command will:</p>
+<ol>
+<li>create a file called <code>.travis.blackbox.key.enc</code></li>
+<li>add a line to your <code>before_install</code> section of your <code>travis.yml</code> like:
+<pre><code class="language-yaml">- openssl aes-256-cbc -K $encrypted_83630750896a_key -iv $encrypted_83630750896a_iv
+   -in .travis.blackbox.key.enc -out .travis.blackbox.key -d
+</code></pre>
+</li>
+</ol>
+<p>All that is left to do is download the blackbox binary and call <code>cipostdeploy</code>.
+Your <code>travis.yml</code> should look like:</p>
+<pre><code class="language-yaml">dist: xenial
+# [...]
+before_install:
+  # autogenerated openssl decrypt line
+  - openssl aes-256-cbc -K $encrypted_83630750896a_key -iv $encrypted_83630750896a_iv
+      -in .travis.blackbox.key.enc -out .travis.blackbox.key -d
+  # Download blackbox, run cipostdeploy
+  - curl -O blackbox.go.linux.amd64 https://github.com/hpoul/blackbox/releases/download/golang-v0.1-cipostdeploy/blackbox.go.linux.amd64
+  - chmod +x blackbox.go.linux.amd64
+  - ./blackbox.go.linux.amd64 cipostdeploy &lt; .travis.blackbox.key
+</code></pre>
+<p>Now make sure you commit <code>travis.yml</code> <strong>and</strong> <code>.travis.blackbox.key.enc</code> into
+git. (Make sure it is the encrypted <code>.enc</code> file you are committing).</p>
+<p>🎉️ and you should be done. Travis should now easily decrypt the blackbox
+private key and then decrypt all your secrets stored in blackbox.</p>
+<h2 id="cirrus-ci"><a href="#cirrus-ci" id="cirrus-ci" class="md-anchor">Cirrus CI</a></h2>
+<p>Cirrus CI is almost the same as travis, but easier because you do not need
+an ecrypted file, but we can use an <a href="https://cirrus-ci.org/guide/writing-tasks/#encrypted-variables">encrypted environment variable</a>.</p>
+<p>Head to your repository main page (for example:
+<code>https://cirrus-ci.com/github/my-organization/my-repository</code>) and click
+on the <em>Settings</em> icon. There you can encrypted an environment variable.
+Simply paste the whole contents of the private key for blackbox into
+the field and hit <strong>ENCRYPT</strong>. The result will be something like:</p>
+<pre><code>ENCRYPTED[d2f1f20235d7abe3e22783f723700e11b0aa60733009d8f7aa15d9fc0ba5c01c09094720016c46d1136345df357e1ab0]
+</code></pre>
+<p>This value can now be added to your <code>.cirrus.yml</code> file:</p>
+<pre><code class="language-yaml">osx_instance:
+  image: mojave-xcode-10.2
+
+task:
+  environment:
+    BLACKBOX_SECRET_KEY: ENCRYPTED[d2f1f20235d7abe3e22783f723700e11b0aa60733009d8f7aa15d9fc0ba5c01c09094720016c46d1136345df357e1ab0]
+  install_script:
+  - curl -O blackbox.go.macos https://github.com/hpoul/blackbox/releases/download/golang-v0.1-cipostdeploy/blackbox.go.macos
+  - chmod +x blackbox.go.macos
+  - echo &quot;$BLACKBOX_SECRET_KEY&quot; | ./blackbox.go.macos cipostdeploy
+
+</code></pre>
+<p>🎉️ and you should be done. ;-)</p>
+<h2 id="gitlab-ci"><a href="#gitlab-ci" id="gitlab-ci" class="md-anchor">GitLab CI</a></h2>
+<p>Especially since GitLab 11.11 storing the encryption key for blackbox
+is particularly easy thanks to <strong>variable types</strong>. (See also the
+<a href="https://gitlab.com/help/ci/variables/README#variables">documentation provided by gitlab</a>). We can simply create a secret
+variable which will be stored into a file. As with Cirrus CI copy and paste
+the whole contents of the secret key file into the text field. Make sure to
+select variable type <code>File</code> and choose a matching key
+like <code>BLACKBOX_SECRET_KEY</code>.</p>
+
+  <figure><picture><source srcset="/articles/secrets-with-blackbox-in-a-continuous-integration-service/NoResize_2147483647x2147483647_webp_gitlab-secret-variable-file-screenshot.png.webp" type="image/webp"></source><img alt="GitLab Secret Variable File" src="/articles/secrets-with-blackbox-in-a-continuous-integration-service/NoResize_2147483647x2147483647_orig_gitlab-secret-variable-file-screenshot.png" width="2210" height="344"></picture>
+    <figcaption>
+      <h4>GitLab Secret Variable File</h4>
+    </figcaption>
+  </figure>
+<p>Now we can simply pass this file along to <code>blackbox cipostdeploy</code>.</p>
+<p><strong>.gitlab-ci.yml</strong></p>
+<pre><code class="language-yaml"># [...]
+before_script:
+  - curl -O blackbox.go.linux.amd64 https://github.com/hpoul/blackbox/releases/download/golang-v0.1-cipostdeploy/blackbox.go.linux.amd64
+  - chmod +x blackbox.go.linux.amd64
+  - ./blackbox.go.linux.amd64 cipostdeploy &quot;$BLACKBOX_SECRET_KEY&quot;
+</code></pre>
+<h1 id="conclusion"><a href="#conclusion" id="conclusion" class="md-anchor">Conclusion</a></h1>
+<p>As you can see it is very straight forward to use blackbox in your CI
+process, it all boils down to three easy steps:</p>
+<ol>
+<li>Create Role Private/Public key pair for CI</li>
+<li>Store the private key as a secret variable with your CI</li>
+<li>Use this secret variable to decrypt blackbox files using <code>cipostdeploy</code></li>
+</ol>
+<div class="adm-block adm-faq">
+<div class="adm-heading">
+<svg class="adm-icon"><use xlink:href="#adm-faq" /></svg><span>What do you think?</span>
+</div>
+<div class="adm-body">
+<p>Have you successfully configured your CI? Did you run into problems?</p>
+<p>Let me know in the comments! Would apreciate any feedback.</p>
+</div>
+</div>
+</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <div class="container"><div id="disqus_thread"></div>
+<script>
+
+var disqus_config = function () {
+this.page.url = 'https://codeux.design/articles/secrets-with-blackbox-in-a-continuous-integration-service/';
+this.page.identifier = 'articles/secrets-with-blackbox-in-a-continuous-integration-service';
+};
+setTimeout(function(){
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://codeuxdesign.disqus.com/embed.js';
+s.async = true;
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+}, 1000);
+</script>
+<noscript>Please enable JavaScript.</noscript></div>
+          </div>
+        </div>
+        <div class="subscribe-button"><a href="https://mailchi.mp/f62fd35b6fb3/articles-subscribe" target="_blank" class="button is-primary is-large" rel="noopener">Subscribe to new articles</a>
+          <p>Be the first to get notified for new articles about Flutter, Dart or mobile App Development in general.</p>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="columns">
+        <div class="column"><span class="footer-title title is-4">Index</span>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Blog</a></li>
+          </ul>
+        </div>
+        <div class="column"><span class="footer-title title is-4">Follow</span>
+          <ul>
+            <li><a href="https://facebook.com/hpoul">Facebook</a></li>
+            <li><a href="https://twitter.com/HerbertPoul">Twitter</a></li>
+            <li><a href="https://github.com/hpoul">GitHub</a></li>
+          </ul>
+        </div>
+        <div class="column"><div class="landingpage-foooter">
+<div class="imprint">
+    <h3>Herbert Poul</h3>
+    <p><span class="developer">Software Deveoper</span> <span class="and">&amp;</span> <span class="ux">UX Designer</span></p>
+    <p class="address">Wenhartgasse 23/3/6
+        1230 Vienna
+        Austria
+        UID-Nr: ATU-65471606</p>
+    <p class="contact">
+        +43 69914488007
+        <a href="mailto:herbert@codeux.design">herbert@codeux.design</a>
+    </p>
+</div>
+</div></div>
+      </div>
+    </footer>
+  </body>
+</html>

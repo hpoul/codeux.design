@@ -5,7 +5,7 @@
     <meta content="Manage secrets in a flutter project with Blackbox | CodeUX.design e.U. - Herbert Poul" property="og:title">
     <meta charset="UTF-8">
     <link rel="canonical" href="https://codeux.design/articles/manage-secrets-flutter-project/">
-    <link rel="stylesheet" href="/styles/css/main.c0147124b44f8589894cbb314ea5e172ae89de5872abf76227e790273c00d233.css" integrity="sha256-wBRxJLRPhYmJTLsxTqXhcq6J3lhyq/diJ+eQJzwA0jM=">
+    <link rel="stylesheet" href="/styles/css/main.57f94c3267e1c46c5993713e698535664bb5f7ce4f0dc7273647b63665fd20d4.css" integrity="sha256-V/lMMmfhxGxZk3E+aYU1Zku1985PDccnNke2NmX9INQ=">
     <script type="text/javascript" src="/script/main.js" async="async"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/favicon.ico" rel="icon" type="image/x-icon">
@@ -27,6 +27,7 @@ repository you are using for your flutter app.
     <meta content="1280" property="og:image:height">
     <meta content="https://codeux.design/articles/manage-secrets-flutter-project/door-1587863_1920.jpg" property="twitter:image">
     <meta content="article" property="og:type">
+<link rel="alternate" type="application/rss+xml" title="Newsfeed - codeux.design/articles"  href="https://codeux.design/articles/feed-rss.xml" />
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-91100035-1"></script>
 <script>
@@ -101,7 +102,7 @@ to build flutter apps on a CI.</p>
 <li>Building release builds on Travis (Android) and Cirrus CI. (iOS)
 (Coming soon)</li>
 </ol>
-<h1><a href="#outline" id="outline" class="md-anchor">Outline</a></h1>
+<h1 id="outline"><a href="#outline" id="outline" class="md-anchor">Outline</a></h1>
 <p>In this article you will get a quick overview on how to manage secrets
 you usually encounter in flutter apps:</p>
 <ol>
@@ -110,7 +111,7 @@ all secrets.</li>
 <li>Signing keys for android and how to configure gradle.</li>
 <li>Provisioning profiles for iOS with fastlane match.</li>
 </ol>
-<h1><a href="#blackbox-overview" id="blackbox-overview" class="md-anchor">Blackbox Overview</a></h1>
+<h1 id="blackbox-overview"><a href="#blackbox-overview" id="blackbox-overview" class="md-anchor">Blackbox Overview</a></h1>
 <p>It is generally not a good idea to add plaintext API keys, passwords, etc.
 to your git repository. But it is very convenient. This is where
 <a href="https://github.com/StackExchange/blackbox">Blackbox</a> comes in and allows
@@ -122,7 +123,7 @@ you to store encrypted secrets along side your flutter app.</p>
 (like Google Analytics, etc.).</li>
 <li>Provisioning Profiles or similar.</li>
 </ul>
-<h1><a href="#installation--set-up" id="installation--set-up" class="md-anchor">Installation &amp; Set Up</a></h1>
+<h1 id="installation--set-up"><a href="#installation--set-up" id="installation--set-up" class="md-anchor">Installation &amp; Set Up</a></h1>
 <p><a href="https://github.com/StackExchange/blackbox">Blackbox</a> are a collection of
 shell scripts based on GPG to store secrets inside public git repositories.</p>
 <p>Installation is as easy as cloning the git repository and adding it&rsquo;s
@@ -162,7 +163,7 @@ bash$ git commit -m 'initialized blackbox'
  create mode 100644 .gitignore
 bash$
 </code></pre>
-<h1><a href="#configure-signing-keys-for-android" id="configure-signing-keys-for-android" class="md-anchor">Configure signing keys for android</a></h1>
+<h1 id="configure-signing-keys-for-android"><a href="#configure-signing-keys-for-android" id="configure-signing-keys-for-android" class="md-anchor">Configure signing keys for android</a></h1>
 <p>It&rsquo;s a good practice to keep your secrets in one place instead of scattering
 them across the whole project. So I tend to have a <code>_tools/secrets</code> folder in
 my projects which contain all non-public files.</p>
@@ -226,7 +227,7 @@ android {
 <p>🎉️ aaaand now you are done. Feel save to commit and push your changes.
 Your secrets are save, but you can still conveniently export your signed
 appbundles/apks.</p>
-<h1><a href="#secret-api-keys-for-your-flutter-app" id="secret-api-keys-for-your-flutter-app" class="md-anchor">Secret API Keys for your flutter app</a></h1>
+<h1 id="secret-api-keys-for-your-flutter-app"><a href="#secret-api-keys-for-your-flutter-app" id="secret-api-keys-for-your-flutter-app" class="md-anchor">Secret API Keys for your flutter app</a></h1>
 <p>To access &ldquo;secret&rdquo; API keys (for example for accessing services like firebase
 or analytics) you can use a separate entry point for your flutter app.</p>
 <p>So instead of using the default <code>lib/main.dart</code> you create your custom
@@ -291,7 +292,7 @@ symlink it into your <code>lib/env/</code> folder.</p>
 Local repo updated.  Please push when ready.
     git push
 </code></pre>
-<h2><a href="#update-release-script-to-use-new-secrets" id="update-release-script-to-use-new-secrets" class="md-anchor">Update release script to use new secrets.</a></h2>
+<h2 id="update-release-script-to-use-new-secrets"><a href="#update-release-script-to-use-new-secrets" id="update-release-script-to-use-new-secrets" class="md-anchor">Update release script to use new secrets.</a></h2>
 <p>Now you have to tell <code>flutter build</code> (and <code>flutter run</code>) to use your new
 secrets file. To do this simply pass in the <code>-t</code> parameter:</p>
 <pre><code class="language-console">bash$ flutter build appbundle -t lib/env/production.dart
@@ -304,7 +305,7 @@ Android Studio:</p>
       <h4>Configure Dart Entrypoint to use your secrets.</h4>
     </figcaption>
   </figure>
-<h1><a href="#ios-manage-provisioning-profiles" id="ios-manage-provisioning-profiles" class="md-anchor">iOS: Manage Provisioning Profiles</a></h1>
+<h1 id="ios-manage-provisioning-profiles"><a href="#ios-manage-provisioning-profiles" id="ios-manage-provisioning-profiles" class="md-anchor">iOS: Manage Provisioning Profiles</a></h1>
 <p><a href="https://docs.fastlane.tools/actions/match/">Fastlane match</a> is a convenient
 way to share provisioning profiles with your team or different CI environments.</p>
 <p>It uses a remote git repository (or google cloud storage) to securely store
@@ -326,7 +327,7 @@ export FASTLANE_PASSWORD=&quot;itunes connect store password&quot;
 Local repo updated.  Please push when ready.
     git push
 </code></pre>
-<h2><a href="#ssh-access" id="ssh-access" class="md-anchor">SSH Access</a></h2>
+<h2 id="ssh-access"><a href="#ssh-access" id="ssh-access" class="md-anchor">SSH Access</a></h2>
 <p>For fastlane to access the git repository where you store the provisioning profile
 you should create a new private key - for example on GitHub or GitLab you can
 register deploy keys. So if you do not yet have a ssh key you can create a new
@@ -339,7 +340,7 @@ one using</p>
   Your public key has been saved in _tools/fastlane_match_certificates_id_rsa.pub
 bash$ blackbox_register_new_file _tools/fastlane_match_certificates_id_rsa
 </code></pre>
-<h2><a href="#using-your-secrets-with-fastlane" id="using-your-secrets-with-fastlane" class="md-anchor">Using your secrets with fastlane</a></h2>
+<h2 id="using-your-secrets-with-fastlane"><a href="#using-your-secrets-with-fastlane" id="using-your-secrets-with-fastlane" class="md-anchor">Using your secrets with fastlane</a></h2>
 <p>Now if you are want to actually access the repository to install all
 provisioning profiles (for example on a CI server) you can simply import the
 private key, source the password file and launch <code>fastlane match</code>:</p>
