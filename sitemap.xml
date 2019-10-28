@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" >
   <url>
     <loc>https://codeux.design/</loc>
-    <lastmod>2019-10-19T13:25:46Z</lastmod>
+    <lastmod>2019-10-28T23:02:06Z</lastmod>
   </url>
   <url>
     <loc>https://codeux.design/articles/</loc>
@@ -18,10 +18,10 @@
   </url>
   <url>
     <loc>https://codeux.design/articles/secrets-with-blackbox-in-a-continuous-integration-service/</loc>
-    <lastmod>2019-10-28T22:46:27.218Z</lastmod>
+    <lastmod>2019-10-28T23:02:06Z</lastmod>
   </url>
   <url>
     <loc>https://codeux.design/articles/ci-building-a-flutter-app-on-travis/</loc>
-    <lastmod>2019-10-28T22:46:27.219Z</lastmod>
+    <lastmod>2019-10-28T23:02:06Z</lastmod>
   </url>
 </urlset>
