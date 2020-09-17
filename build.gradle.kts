@@ -8,8 +8,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
-    id("org.jetbrains.kotlin.jvm") version "1.3.41"
-    id("io.ratpack.ratpack-java") version "1.7.5"
+    kotlin("jvm") version "1.4.0"
+    id("io.ratpack.ratpack-java") version "1.8.0"
 
     // Apply the application plugin to add support for building a CLI application.
     application
