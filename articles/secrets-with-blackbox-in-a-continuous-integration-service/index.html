@@ -5,8 +5,8 @@
     <meta content="Secrets with Blackbox in a Continuous Integration service | CodeUX.design e.U. - Herbert Poul" property="og:title">
     <meta charset="UTF-8">
     <link rel="canonical" href="https://codeux.design/articles/secrets-with-blackbox-in-a-continuous-integration-service/">
-    <link rel="stylesheet" href="/styles/css/main.ef1f39c4ca3757f3fc66e9fdeebb06a30ab4465ef8c7a4d07b99e09349c5c5a8.css" integrity="sha256-7x85xMo3V/P8Zun97rsGowq0Rl74x6TQe5ngk0nFxag=">
-    <script type="text/javascript" src="/script/main.js" async="async"></script>
+    <link rel="stylesheet" href="/styles/css/main.437fcb46d3b05a079fe7ce97e12a03e44bded78167bd7799a9acf28d15a34bbe.css" integrity="sha256-Q3/LRtOwWgef586X4SoD5Eve14FnvXeZqazyjRWjS74=">
+    <script type="text/javascript" src="/script/main.8146127a12544f9a6c973484e2d1f7bba26afcb9c985a733cb2261c80c294b23.js" async="async" integrity="sha256-gUYSehJUT5pslzSE4tH3u6Jq/LnJhaczyyJhyAwpSyM="></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/favicon.ico" rel="icon" type="image/x-icon">
     <link href="/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16">
@@ -70,7 +70,7 @@
             <div class="bg-image"><picture><source srcset="/articles/secrets-with-blackbox-in-a-continuous-integration-service/Fit_1000x1000_webp_padlock-166882_1920.jpg.webp" type="image/webp"></source><img alt="Teaser Secrets with Blackbox in a Continuous Integration service" src="/articles/secrets-with-blackbox-in-a-continuous-integration-service/Fit_1000x1000_orig_padlock-166882_1920.jpg" width="1000" height="667"></picture></div>
             <div class="hero-body has-text-centered">
               <h1 class="title">Secrets with Blackbox in a Continuous Integration service</h1>
-              <h2 class="subtitle is-size-6 has-text-weight-bold">29 October 2019</h2>
+              <h2 class="subtitle is-size-6 has-text-weight-bold">October 29, 2019</h2>
             </div>
           </div>
           <div class="section">
@@ -118,9 +118,9 @@ on GitLab CI, Travis CI and CirrusCI</p>
 </li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ol>
-<h1 id="overview"><a href="#overview" id="overview" class="md-anchor">Overview</a></h1>
+<h1 id="overview"><a href="#overview" class="md-anchor">Overview</a></h1>
 <p>In a previous article we explored how to
-<a href="../manage-secrets-flutter-project">set up blackbox for your git repository</a> for
+<a href="/articles/manage-secrets-flutter-project/">set up blackbox for your git repository</a> for
 your flutter project. Now let&rsquo;s look how to actually use them in your favorite
 CI.</p>
 <p>To avoid having to set up a whole OpenGPG environment and import keys I
@@ -129,7 +129,7 @@ the command <code>cipostdeploy</code> which simply takes a private key and decry
 all registered blackbox files in your repository.</p>
 <p>We can easily make use of it in a CI by downloading the required
 <a href="https://github.com/hpoul/blackbox/releases/tag/golang-v0.1-cipostdeploy">binary from the github release</a>.</p>
-<h1 id="creating-a-role-account"><a href="#creating-a-role-account" id="creating-a-role-account" class="md-anchor">Creating a &ldquo;role account&rdquo;</a></h1>
+<h1 id="creating-a-role-account"><a href="#creating-a-role-account" class="md-anchor">Creating a &ldquo;role account&rdquo;</a></h1>
 <p>A role account is simply a private key you can register as &ldquo;admin&rdquo; in
 your blackbox repository which is not a real user. But due to how blackbox
 is set up you still need a full public/private key pair which is associated
@@ -169,8 +169,8 @@ projects cloned and forked is pretty much impossible. So you still have to
 protect your private keys!</p>
 </div>
 </div>
-<h1 id="configure-your-ci"><a href="#configure-your-ci" id="configure-your-ci" class="md-anchor">Configure your CI</a></h1>
-<h2 id="travis-ci"><a href="#travis-ci" id="travis-ci" class="md-anchor">Travis CI</a></h2>
+<h1 id="configure-your-ci"><a href="#configure-your-ci" class="md-anchor">Configure your CI</a></h1>
+<h2 id="travis-ci"><a href="#travis-ci" class="md-anchor">Travis CI</a></h2>
 <p>First create a new role account for travis as outlined in the previous chapter.</p>
 <p>Unfortunately for travis we can&rsquo;t simply use an encrypted variable, because
 the private key is too large. So we have to use <strong>encrypted files</strong>.</p>
@@ -221,7 +221,7 @@ before_install:
 git. (Make sure it is the encrypted <code>.enc</code> file you are committing).</p>
 <p>🎉️ and you should be done. Travis should now easily decrypt the blackbox
 private key and then decrypt all your secrets stored in blackbox.</p>
-<h2 id="cirrus-ci"><a href="#cirrus-ci" id="cirrus-ci" class="md-anchor">Cirrus CI</a></h2>
+<h2 id="cirrus-ci"><a href="#cirrus-ci" class="md-anchor">Cirrus CI</a></h2>
 <p>Cirrus CI is almost the same as travis, but easier because you do not need
 an ecrypted file, but we can use an <a href="https://cirrus-ci.org/guide/writing-tasks/#encrypted-variables">encrypted environment variable</a>.</p>
 <p>Head to your repository main page (for example:
@@ -245,7 +245,7 @@ task:
 
 </code></pre>
 <p>🎉️ and you should be done. ;-)</p>
-<h2 id="gitlab-ci"><a href="#gitlab-ci" id="gitlab-ci" class="md-anchor">GitLab CI</a></h2>
+<h2 id="gitlab-ci"><a href="#gitlab-ci" class="md-anchor">GitLab CI</a></h2>
 <p>Especially since GitLab 11.11 storing the encryption key for blackbox
 is particularly easy thanks to <strong>variable types</strong>. (See also the
 <a href="https://gitlab.com/help/ci/variables/README#variables">documentation provided by gitlab</a>). We can simply create a secret
@@ -267,7 +267,7 @@ before_script:
   - chmod +x blackbox.go.linux.amd64
   - ./blackbox.go.linux.amd64 cipostdeploy &quot;$BLACKBOX_SECRET_KEY&quot;
 </code></pre>
-<h1 id="conclusion"><a href="#conclusion" id="conclusion" class="md-anchor">Conclusion</a></h1>
+<h1 id="conclusion"><a href="#conclusion" class="md-anchor">Conclusion</a></h1>
 <p>As you can see it is very straight forward to use blackbox in your CI
 process, it all boils down to three easy steps:</p>
 <ol>

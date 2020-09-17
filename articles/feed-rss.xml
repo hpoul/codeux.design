@@ -10,28 +10,34 @@
         <rdf:li />
         <rdf:li />
         <rdf:li />
+        <rdf:li />
       </rdf:Seq>
     </items>
   </channel>
   <item rdf:about="https://codeux.design/articles/launching-new-blog/">
     <title>Launching new blog &#x1f389;️</title>
     <link>https://codeux.design/articles/launching-new-blog/</link>
-    <dc:date>2019-10-15T16:41:00Z</dc:date>
+    <dc:date>2019-10-15T15:41:00Z</dc:date>
   </item>
   <item rdf:about="https://codeux.design/articles/manage-secrets-flutter-project/">
     <title>Manage secrets in a flutter project with Blackbox</title>
     <link>https://codeux.design/articles/manage-secrets-flutter-project/</link>
-    <dc:date>2019-10-22T16:41:00Z</dc:date>
+    <dc:date>2019-10-22T15:41:00Z</dc:date>
   </item>
   <item rdf:about="https://codeux.design/articles/secrets-with-blackbox-in-a-continuous-integration-service/">
     <title>Secrets with Blackbox in a Continuous Integration service</title>
     <link>https://codeux.design/articles/secrets-with-blackbox-in-a-continuous-integration-service/</link>
-    <dc:date>2019-10-29T17:41:00Z</dc:date>
+    <dc:date>2019-10-29T16:41:00Z</dc:date>
   </item>
   <item rdf:about="https://codeux.design/articles/ci-building-a-flutter-app-on-travis/">
     <title>CI: Building a Flutter App on Travis️</title>
     <link>https://codeux.design/articles/ci-building-a-flutter-app-on-travis/</link>
-    <dc:date>2019-11-10T17:41:00Z</dc:date>
+    <dc:date>2019-11-10T16:41:00Z</dc:date>
+  </item>
+  <item rdf:about="https://codeux.design/articles/automatically-add-device-frames-and-text-to-app-screenshots/">
+    <title>Automatically add device frames and text to app screenshots</title>
+    <link>https://codeux.design/articles/automatically-add-device-frames-and-text-to-app-screenshots/</link>
+    <dc:date>2020-09-17T15:41:00Z</dc:date>
   </item>
 </rdf:RDF>
 

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Automatically add device frames and text to screenshots | CodeUX.design e.U. - Herbert Poul</title>
+    <meta content="Automatically add device frames and text to screenshots | CodeUX.design e.U. - Herbert Poul" property="og:title">
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://codeux.design/articles/automatically-add-device-frames-and-text-to-app-screenshots/">
+    <link rel="stylesheet" href="/styles/css/main.437fcb46d3b05a079fe7ce97e12a03e44bded78167bd7799a9acf28d15a34bbe.css" integrity="sha256-Q3/LRtOwWgef586X4SoD5Eve14FnvXeZqazyjRWjS74=">
+    <script type="text/javascript" src="/script/main.8146127a12544f9a6c973484e2d1f7bba26afcb9c985a733cb2261c80c294b23.js" async="async" integrity="sha256-gUYSehJUT5pslzSE4tH3u6Jq/LnJhaczyyJhyAwpSyM="></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/favicon.ico" rel="icon" type="image/x-icon">
+    <link href="/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16">
+    <link href="/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+    <meta name="description" content="Prepare screenshots of Flutter Apps for Apple App Store
+and Google Play store by adding device frames, captions and effects.
+">
+    <meta content="Prepare screenshots of Flutter Apps for Apple App Store
+and Google Play store by adding device frames, captions and effects.
+" property="og:description">
+    <meta content="Prepare screenshots of Flutter Apps for Apple App Store
+and Google Play store by adding device frames, captions and effects.
+" property="twitter:description">
+    <meta content="https://codeux.design/articles/automatically-add-device-frames-and-text-to-app-screenshots/" property="og:url">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Automatically add device frames and text to screenshots","mainEntityOfPage":{"@type":"WebPage","@id":"https://codeux.design/articles/automatically-add-device-frames-and-text-to-app-screenshots/"},"image":"https://codeux.design/articles/automatically-add-device-frames-and-text-to-app-screenshots/frameit-phone-device-frames.png","wordcount":877,"url":"https://codeux.design/articles/automatically-add-device-frames-and-text-to-app-screenshots/","publisher":{"@type":"Organization","name":"CodeUX.design e.U. - Herbert Poul","logo":{"@type":"ImageObject","url":null}},"author":{"@type":"Person","name":"Herbert Poul"},"description":"Prepare screenshots of Flutter Apps for Apple App Store\nand Google Play store by adding device frames, captions and effects.\n"}</script>
+    <meta content="https://codeux.design/articles/automatically-add-device-frames-and-text-to-app-screenshots/frameit-phone-device-frames.png" property="og:image">
+    <meta content="1800" property="og:image:width">
+    <meta content="1220" property="og:image:height">
+    <meta content="https://codeux.design/articles/automatically-add-device-frames-and-text-to-app-screenshots/frameit-phone-device-frames.png" property="twitter:image">
+    <meta content="article" property="og:type">
+<link rel="alternate" type="application/rss+xml" title="Newsfeed - codeux.design/articles"  href="https://codeux.design/articles/feed-rss.xml" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-91100035-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-91100035-1');
+</script>
+  </head>
+  <body class="has-navbar-fixed-top has-spaced-navbar-fixed-top blog-content">
+    <nav class="" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand"><a class="navbar-burger" role="button" data-target="main-menu" aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span></a></div>
+        <div class="navbar-menu" id="main-menu">
+          <div class="navbar-end"><a href="/" class="navbar-item" title="Home">Home</a><a href="/articles/" class="navbar-item is-active" title="Blog">Blog</a></div>
+        </div>
+      </div>
+    </nav>
+<div class="blog-sidebar">
+    <div class="sidebar-bg-image">
+        <picture><source srcset="/partials/blogheader/Fit_2147483647x1000_webp_P6080442-Pano.jpg.webp" type="image/webp"></source><img alt="" src="/partials/blogheader/Fit_2147483647x1000_orig_P6080442-Pano.jpg" width="649" height="1000"></picture>    </div>
+    <div class="column has-text-centered">
+        <div class="avatar-herbert-image-wrapper">
+            <div class="avatar-herbert-image-dark">
+                <picture><source srcset="/partials/blogheader/Cover_400x400_webp_herbert_profile_picture_800.jpg.webp" type="image/webp"></source><img alt="" src="/partials/blogheader/Cover_400x400_orig_herbert_profile_picture_800.jpg" width="400" height="400"></picture>            </div>
+        </div>
+
+        <img class="logotext" src="/partials/blogheader/textlogo.svg" alt="codeux.design" />
+        <hr />
+        <h3>Flutter App Developer and UX Designer</h3>
+        <hr />
+        <div>
+            <a href="/" class="button is-outlined is-rounded">Home</a>
+            <a href="/articles/" class="button is-outlined is-rounded">Blog</a>
+            <a href="mailto:herbert@codeux.design" class="button is-outlined is-rounded">Contact</a>
+        </div>
+    </div>
+</div>    <main>
+      <div>
+        <div class="blog-main-content">
+          <div class="hero is-medium has-bg-img">
+            <div class="bg-image"><picture><source srcset="/articles/automatically-add-device-frames-and-text-to-app-screenshots/Fit_1000x1000_webp_frameit-phone-device-frames.png.webp" type="image/webp"></source><img alt="Teaser Automatically add device frames and text to app screenshots" src="/articles/automatically-add-device-frames-and-text-to-app-screenshots/Fit_1000x1000_orig_frameit-phone-device-frames.png" width="1000" height="678"></picture></div>
+            <div class="hero-body has-text-centered">
+              <h1 class="title">Automatically add device frames and text to app screenshots</h1>
+              <h2 class="subtitle is-size-6 has-text-weight-bold">September 17, 2020</h2>
+            </div>
+          </div>
+          <div class="section">
+            <div class="container">
+              <div class="columns">
+                <div class="column">
+                  <div class="content has-drop-caps line-numbers"><svg xmlns="http://www.w3.org/2000/svg" class="adm-hidden">
+<symbol id="adm-note">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<g fill="currentColor">
+<path d="m15.4 5h4.5v2.7h-4.5z" transform="matrix(-.7071 -.7071 .7071 -.7071 25.7188 23.288)"/>
+<path d="m13.9 7 3.1 3.1-9.5 9.6-3.5.3.3-3.5z"/>
+</g>
+</svg>
+</symbol>
+<symbol id="adm-tip">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m12.3 10c2.8-.7 4.2-3.8 2.1-7.4 8.1 3.2 7.5 18.1-2.6 18.4-8.1.2-9.8-11.4-4.4-14.8.2 3.3 2.8 4.3 4.9 3.8zm-3.2 5.8c.2 1.6 2.5 1.9 3.6 1.5 2.8-1 2.5-4 2.1-5.1-.8 1.4-1.3 1.7-2.2 2s-3.7-.7-3.5 1.6z" fill="currentColor"/>
+</svg>
+</symbol>
+</svg>
+<p>One of the more involved tasks when preparing an app for final release
+on Apple App Store, Google Play Store and others is to make, prepare and
+localize your app&rsquo;s screenshots. Luckily there are tools available
+to automatically take screenshots and then frame them accordingly.</p>
+<ol>
+<li>Take a screenshots using the <a href="https://pub.dev/packages/screenshots">screenshots</a> package from pub.</li>
+<li>Frame screenshots with <a href="https://github.com/authpass/frameit-chrome">frameit_chrome</a>.
+After experimenting with <a href="https://docs.fastlane.tools/actions/frameit/">frameit from fastlane</a> I felt it was
+way too much pain to add <strong>good looking</strong> text with custom fonts (or bold text). It also did not
+support Emojis. The easiest way hence was to take screenshots with <strong>Chrome Headless</strong> 😅️.</li>
+</ol>
+
+  <figure><picture><source srcset="/articles/automatically-add-device-frames-and-text-to-app-screenshots/NoResize_2147483647x2147483647_webp_frameit-phone-device-frames.png.webp" type="image/webp"></source><img alt="Framed images from AuthPass" src="/articles/automatically-add-device-frames-and-text-to-app-screenshots/NoResize_2147483647x2147483647_orig_frameit-phone-device-frames.png" width="1800" height="1220"></picture>
+    <figcaption>
+      <h4>Framed images from AuthPass</h4>
+    </figcaption>
+  </figure>
+<h1 id="taking-screenshots"><a href="#taking-screenshots" class="md-anchor">Taking screenshots</a></h1>
+<p>The first step is to actually take the screenshots. For Flutter apps on Android and
+iOS apps you can use <a href="https://pub.dev/packages/screenshots">screenshots</a> package.</p>
+<p>To make the best of it create a <code>screenshots.yaml</code> as described in <a href="https://pub.dev/packages/screenshots#configuration">the documentation</a>,
+but make sure to include <code>frame: false</code>. Here is an example:</p>
+<pre><code class="language-yaml">tests:
+  # Note: flutter driver expects a pair of files eg, main1.dart and main1_test.dart
+  - --target=test_driver/app.dart --driver=test_driver/screenshot_test.dart
+
+# Interim location of screenshots from tests
+staging: /var/tmp/screenshots
+
+# A list of locales supported by the app
+locales:
+  - en-US
+  - de-DE
+  - lt-LT
+  - ru-RU
+  - uk-UA
+  - fr-FR
+
+# A map of devices to emulate
+devices:
+  ios:
+    iPhone Xs Max:
+  android:
+    samsung-galaxy-s10-plus:
+
+# Disabling framing, we do this with frameit_chrome later ;-)
+frame: false
+</code></pre>
+<p>You also have to create the actual driver test which has to trigger the
+screenshots. Driver tests are <a href="https://flutter.dev/docs/cookbook/testing/integration/introduction">documented on the flutter page about integration tests</a>.</p>
+<p>The only addition is to call the <code>screenshots</code> packages <code>screenshot</code> method as <a href="https://github.com/mmcc007/screenshots#modifying-tests-for-screenshots">they describe in their documentation</a>.</p>
+<div class="adm-block adm-note">
+<div class="adm-heading">
+<svg class="adm-icon"><use xlink:href="#adm-note" /></svg><span>Note</span>
+</div>
+<div class="adm-body">
+<p>If you do not want to add <code>screenshots</code> package to your dependency, it is actually
+quite easy to manually imement the <code>screenshot</code> method and put them into
+the <code>staging</code> directory (e.g. <code>/var/tmp/screenshots</code>).</p>
+<p>Checkout the <a href="https://github.com/authpass/authpass/blob/master/authpass/test_driver/util/_screenshots_util.dart">screenshot_util.dart</a> which
+I have extracted from the <code>screenshots</code> package.</p>
+</div>
+</div>
+<p>Now run <code>screenshots</code> and watch as it launches each simulator and generates screenshots.</p>
+<pre><code class="language-shell">  flutter pub global activate screenshots:main
+  flutter pub global run screenshots:main
+</code></pre>
+<h1 id="framing-screenshots-and-adding-captions"><a href="#framing-screenshots-and-adding-captions" class="md-anchor">Framing screenshots and adding captions</a></h1>
+<p>Now to the fun part. After the taking screenshots your flutter project
+should look something like:</p>
+<pre><code class="language-bash">android/
+    metadata/
+      android/ # &lt;-- `--base-dir` argument
+        en-US/
+          &lt;device-name&gt;-&lt;screenshot-name&gt;.png
+          samsung-galaxy-s10-plus-password_generator.png # Example
+          title.strings
+          keyword.strings (optional)
+        de-DE/
+          &lt;device-name&gt;-&lt;screenshot-name&gt;.png
+          samsung-galaxy-s10-plus-password_generator.png # Example
+          title.strings
+          keyword.strings (optional)
+        frameit.yaml (optional)
+      framed/ # &lt;-- output directory
+ios/
+    metadata/
+      en-US/
+        ...
+      de-DE/
+        ...
+</code></pre>
+<p>The <code>screenshots</code> package will generate screenshots int <code>android/metadata/android</code> and <code>ios/metadata</code>.</p>
+<p>To create framed versions of these screenshots we have to:</p>
+<ul>
+<li>Write nice captions. into <code>title.strings</code> and optionally <code>keyword.strings</code> in <code>en-US</code>.</li>
+<li>Translate those captions into each locale subdirectory</li>
+<li>Optionally write a <code>frameit.yaml</code> to customize frames.</li>
+</ul>
+<p>So to start let&rsquo;s write some captions into <code>android/metadata/android/en-US/title.strings</code>:</p>
+<pre><code># title.strings
+&quot;appbar_menu&quot; = &quot;Example title 👍️&quot;;
+</code></pre>
+<p>And optionally a <code>keyword.strings</code>:</p>
+<pre><code># keyword.strings
+&quot;appbar_menu&quot; = &quot;SWEAT&quot;;
+</code></pre>
+<h2 id="frameit-chrome"><a href="#frameit-chrome" class="md-anchor">frameit_chrome</a></h2>
+<p><a href="https://github.com/authpass/frameit-chrome">frameit_chrome</a> is a dart script which uses <strong>Chrome Headless</strong>
+to generate nice looking framed versions of your screenshots. Using Chrome has quite a few advantages:</p>
+<ul>
+<li>High quality font rendering.</li>
+<li>Font effects (colors, emoijs 🥳, etc).</li>
+<li>Simple additions of additional effects (gradient backgrounds, shadows, etc.) using CSS.</li>
+<li>Simple layout method using CSS.</li>
+</ul>
+<h2 id="generating-framed-screenshots"><a href="#generating-framed-screenshots" class="md-anchor">Generating framed screenshots</a></h2>
+<p>We can simply use dart&rsquo;s pub to install the <code>frameit_chrome</code> command:</p>
+<pre><code class="language-bash">$ pub global activate frameit_chrome
+</code></pre>
+<p>We also have to download the actual device frames. For this we use the <a href="https://facebook.design/devices">facebook device frames</a> which
+are bundled by fastlane in a nice handy repository at <a href="https://github.com/fastlane/frameit-frames">https://github.com/fastlane/frameit-frames</a>.</p>
+<pre><code class="language-bash">cd $HOME
+git clone https://github.com/fastlane/frameit-frames
+</code></pre>
+<p>Now we are ready to generate our outputs:</p>
+<pre><code class="language-bash">pub global run frameit_chrome --base-dir=/myproject/fastlane/metadata/android --frames-dir=$HOME/frameit-frames/latest
+</code></pre>
+<p>On non-mac platforms or when you&rsquo;ve installed Google Chrome in non-default location:</p>
+<pre><code class="language-bash">pub global run frameit_chrome --base-dir=/myproject/fastlane/metadata/android --frames-dir=$HOME/frameit-frames/latest --chrome-binary=&quot;/Applications/Google Chrome.app/Contents/MacOS/Google Chrome&quot;
+</code></pre>
+<p>The above command will create files in <code>/myproject/fastlane/metadata/framed</code>. For our above setup this might look like:</p>
+
+  <figure><picture><source srcset="/articles/automatically-add-device-frames-and-text-to-app-screenshots/Fit_2147483647x500_webp_samsung-galaxy-s10-plus-appbar_menu.png.webp" type="image/webp"></source><img alt="Example screenshot framed with Galaxy S10 Frame." src="/articles/automatically-add-device-frames-and-text-to-app-screenshots/Fit_2147483647x500_orig_samsung-galaxy-s10-plus-appbar_menu.png" width="237" height="500"></picture>
+    <figcaption>
+      <h4>Example screenshot framed with Galaxy S10 Frame.</h4>
+    </figcaption>
+  </figure>
+<h2 id="multiple-variants"><a href="#multiple-variants" class="md-anchor">Multiple variants</a></h2>
+<p>Now if we want to publish our app into another app store which has other
+dimension requirements. For example the Samsung Galaxy Store which requires
+a 1:2 ratio 🤷‍♂️️ We can could just crop our screenshot.</p>
+<p>This is done using a <code>frameit.yaml</code> configuration file in the your metadata
+directory. So let&rsquo;s create a <code>fastlane/metadata/android/frameit.yaml</code>:</p>
+<pre><code class="language-yaml"># metadata/android/frameit.yaml
+
+# Rewriting file name patterns.
+rewrite:
+  - pattern: 'samsung-galaxy-s10-plus'
+    replace: 'samsungapps-samsung-galaxy-s10-plus'
+    action: duplicate
+
+# Customizing images.
+images:
+  samsungapps-samsung-galaxy-s10-plus:
+    cropHeight: 2600
+    device: 'samsung-galaxy-s10-plus'
+</code></pre>
+<p>First we define that all files which match the given pattern should be
+duplicated. They will be prefixed with <code>samsungapps</code>.</p>
+<p>Next we define a custom image processing for all images which start
+with <code>samsungapps-samsung-galaxy-s10-plus</code>, by overwriting the device name
+we want to use, and the height we want to crop.</p>
+<p>The output is the exact same screenshot, frame but cropped at the
+given pixel height, ready to be submitted to the Samsung Galaxy Store.</p>
+
+  <figure><picture><source srcset="/articles/automatically-add-device-frames-and-text-to-app-screenshots/Fit_2147483647x500_webp_samsungapps-samsung-galaxy-s10-plus-appbar_menu.png.webp" type="image/webp"></source><img alt="Framed with Galaxy S10, and cropped to 2600px" src="/articles/automatically-add-device-frames-and-text-to-app-screenshots/Fit_2147483647x500_orig_samsungapps-samsung-galaxy-s10-plus-appbar_menu.png" width="277" height="500"></picture>
+    <figcaption>
+      <h4>Framed with Galaxy S10, and cropped to 2600px</h4>
+    </figcaption>
+  </figure>
+<h1 id="customization"><a href="#customization" class="md-anchor">Customization</a></h1>
+<p>To further customize the look of your framed screenshots you can simply overload
+the CSS. This allows you to customize the background gradient, add/remove shadows,
+customize the fonts, etc.</p>
+<div class="adm-block adm-tip">
+<div class="adm-heading">
+<svg class="adm-icon"><use xlink:href="#adm-tip" /></svg><span>Tip</span>
+</div>
+<div class="adm-body">
+<p>Take a look at the <a href="https://github.com/authpass/frameit-chrome/blob/master/asset/index.html">used in index.html</a> for css properties to overwrite.</p>
+</div>
+</div>
+<p>For example to customize the background gradient modify <code>frameit.yaml</code> to add a <code>css</code>
+property to your images configuration:</p>
+<pre><code class="language-yaml">images:
+  samsungapps-samsung-galaxy-s10-plus:
+    cropHeight: 2600
+    device: 'samsung-galaxy-s10-plus'
+    previewLabel: 'Samsung App Store'
+    css: |
+      .scene {
+        background: rgb(34,193,195);
+        background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+      }
+      .frame-bg-shadow {
+          filter: drop-shadow(25px 25px 15px blue);
+      }
+</code></pre>
+<p>This results in some fancy crazy effects:</p>
+
+  <figure><picture><source srcset="/articles/automatically-add-device-frames-and-text-to-app-screenshots/Fit_2147483647x500_webp_samsungapps-samsung-galaxy-s10-plus-appbar_menu-custom.png.webp" type="image/webp"></source><img alt="Custom gradient, with crazy colors 💪️" src="/articles/automatically-add-device-frames-and-text-to-app-screenshots/Fit_2147483647x500_orig_samsungapps-samsung-galaxy-s10-plus-appbar_menu-custom.png" width="277" height="500"></picture>
+    <figcaption>
+      <h4>Custom gradient, with crazy colors 💪️</h4>
+    </figcaption>
+  </figure>
+<p>Hope you enjoyed this short introduction. Make sure to follow the <a href="https://github.com/authpass/frameit-chrome">frameit-chrome github project</a>: <a href="https://github.com/authpass/frameit-chrome">https://github.com/authpass/frameit-chrome</a></p>
+<p>For questions, comments, problems just post in the <a href="https://github.com/authpass/frameit-chrome">github issues</a>.</p>
+</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <div class="container"><div id="disqus_thread"></div>
+<script>
+
+var disqus_config = function () {
+this.page.url = 'https://codeux.design/articles/automatically-add-device-frames-and-text-to-app-screenshots/';
+this.page.identifier = 'articles/automatically-add-device-frames-and-text-to-app-screenshots';
+};
+setTimeout(function(){
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://codeuxdesign.disqus.com/embed.js';
+s.async = true;
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+}, 1000);
+</script>
+<noscript>Please enable JavaScript.</noscript></div>
+          </div>
+        </div>
+        <div class="subscribe-button"><a href="https://mailchi.mp/f62fd35b6fb3/articles-subscribe" target="_blank" class="button is-primary is-large" rel="noopener">Subscribe to new articles</a>
+          <p>Be the first to get notified for new articles about Flutter, Dart or mobile App Development in general.</p>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="columns">
+        <div class="column"><span class="footer-title title is-4">Index</span>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Blog</a></li>
+          </ul>
+        </div>
+        <div class="column"><span class="footer-title title is-4">Follow</span>
+          <ul>
+            <li><a href="https://facebook.com/hpoul">Facebook</a></li>
+            <li><a href="https://twitter.com/HerbertPoul">Twitter</a></li>
+            <li><a href="https://github.com/hpoul">GitHub</a></li>
+          </ul>
+        </div>
+        <div class="column"><div class="landingpage-foooter">
+<div class="imprint">
+    <h3>Herbert Poul</h3>
+    <p><span class="developer">Software Deveoper</span> <span class="and">&amp;</span> <span class="ux">UX Designer</span></p>
+    <p class="address">Wenhartgasse 23/3/6
+        1230 Vienna
+        Austria
+        UID-Nr: ATU-65471606</p>
+    <p class="contact">
+        +43 69914488007
+        <a href="mailto:herbert@codeux.design">herbert@codeux.design</a>
+    </p>
+</div>
+</div></div>
+      </div>
+    </footer>
+  </body>
+</html>
