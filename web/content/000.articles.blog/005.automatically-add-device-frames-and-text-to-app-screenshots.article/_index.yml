@@ -1,0 +1,34 @@
+author: 'Herbert Poul'
+date: '2020-09-17 17:41'
+categories:
+- 'Flutter'
+seo:
+  title: 'Automatically add device frames and text to screenshots'
+  description: >-
+    Prepare screenshots of Flutter Apps for Apple App Store
+    and Google Play store by adding device frames, captions and effects.
+title: 'Automatically add device frames and text to app screenshots'
+teaser: 'frameit-phone-device-frames.png'
+embed:
+  figures:
+    framedExample:
+      image: frameit-phone-device-frames.png
+      title: 'Framed images from AuthPass'
+    galaxyS10:
+      image: samsung-galaxy-s10-plus-appbar_menu.png
+      title: 'Example screenshot framed with Galaxy S10 Frame.'
+      resize:
+        height: 500
+        fillType: 'Fit'
+    galaxyS10Cropped:
+      image: samsungapps-samsung-galaxy-s10-plus-appbar_menu.png
+      title: 'Framed with Galaxy S10, and cropped to 2600px'
+      resize:
+        height: 500
+        fillType: 'Fit'
+    galaxyS10Custom:
+      image: samsungapps-samsung-galaxy-s10-plus-appbar_menu-custom.png
+      title: 'Custom gradient, with crazy colors 💪️'
+      resize:
+        height: 500
+        fillType: 'Fit'
