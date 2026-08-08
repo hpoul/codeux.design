@@ -113,16 +113,18 @@
     .portfolio-project-info-code {
       background-image: url('#{$imageBaseDir}/avatar/code.svg');
 
+      // Orange, matching the {} circle beside it and the .code competence row.
       .info-tags .info-tag:before {
-        background: $color-green;
+        background: $color-orange;
       }
     }
 
     .portfolio-project-info-ux {
       background-image: url('#{$imageBaseDir}/avatar/ux.svg');
 
+      // Green, matching the UX circle beside it and the .ux competence row.
       .info-tags .info-tag:before {
-        background: $color-orange;
+        background: $color-green;
       }
     }
   }
