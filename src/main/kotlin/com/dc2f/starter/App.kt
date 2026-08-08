@@ -226,7 +226,37 @@ s.setAttribute('data-timestamp', +new Date());
 
 }
 
-abstract class MyWebsite : BaseWebsite
+abstract class MyWebsite : BaseWebsite {
+
+    /**
+     * The inherited default describes the site as a schema.org [Product], which
+     * fits authpass.app-website (a product, with an aggregateRating) but not a
+     * one-person software and UX practice. ProfessionalService is an
+     * Organization subtype, so `logo`, `image` and `sameAs` are all valid on it
+     * -- `logo` is not even a Product property.
+     *
+     * Null-valued keys are dropped rather than serialised, so an unset logo no
+     * longer emits `"logo": null`.
+     */
+    override fun createLinkedData(context: RenderContext<*>): Map<String, Any?>? {
+        // External footer links are the social profiles; sameAs is what ties
+        // this entity to them for search engines.
+        val sameAs = footerMenu
+            .flatMap { it.children }
+            .mapNotNull { it.url }
+            .distinct()
+
+        return mapOf(
+            "@context" to "https://schema.org",
+            "@type" to "ProfessionalService",
+            "url" to context.href(this.index, true),
+            "name" to name,
+            "logo" to config.logo?.href(context, absoluteUri = true),
+            "image" to config.socialImage?.href(context, absoluteUri = true),
+            "sameAs" to sameAs.takeIf { it.isNotEmpty() }
+        ).filterValues { it != null }
+    }
+}
 
 @Nestable("uxlandingpage")
 interface CodeUxLandingPage : SimpleLandingPage {
