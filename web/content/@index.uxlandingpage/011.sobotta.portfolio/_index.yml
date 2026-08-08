@@ -15,5 +15,5 @@ code: |
 
 uxTags: ['Mockups', 'Prototype']
 ux: |
-  Mockups and fast prototyping for a new training system
-  based on spaced repetition learning.
+  Mockups and rapid prototyping for a spaced repetition training mode
+  built on top of the atlas' anatomy content.
