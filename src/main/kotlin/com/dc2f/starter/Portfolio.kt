@@ -80,14 +80,14 @@ fun WebsiteTheme.portfolioRenderer(config: ThemeConfig) {
 
                         div("portfolio-project-info-code") {
                             div("info-tags") {
-                                node.codeTags.forEach { span("tag") { +"#$it" } }
+                                node.codeTags.forEach { span("info-tag") { +"#$it" } }
                             }
                             p { +node.code }
                         }
 
                         div("portfolio-project-info-ux") {
                             div("info-tags") {
-                                node.uxTags.forEach { span("tag") { +"#$it" } }
+                                node.uxTags.forEach { span("info-tag") { +"#$it" } }
                             }
                             p { +node.ux }
                         }

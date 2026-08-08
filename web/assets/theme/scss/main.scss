@@ -37,17 +37,25 @@ body {
 }
 
 a {
-  // Brand green, underlined. At 1.9:1 the color alone cannot be what marks a
-  // link, so the underline carries that job (WCAG 1.4.1) rather than the hue.
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  // No underline at rest. WCAG 1.4.1 is about links buried in a block of
+  // prose, where colour alone has to carry them; this site has none -- every
+  // link is a heading, a list item, a bare URL or a button, so position
+  // already distinguishes them. Underline appears on hover as the affordance.
+  text-decoration: none;
   font-weight: bold;
   color: $color-green;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 2px;
+  }
 }
 
-// These have their own affordance already; the underline would just be noise.
 .navbar-item, .button, .cta {
-  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .ux-landingpage {
