@@ -12,15 +12,14 @@ $color-orange: #E29B4A;
 $color-orange-lighter: #F5EDE4;
 $color-ux: $color-green;
 
-// Same hue and saturation as the brand colors, darkened until they clear
-// WCAG AA (4.5:1) against #FAFAFA -- the darkest background they land on
-// (the footer; portfolio cards are #FCFCFC, everything else is white). The
-// brand colors themselves only reach 1.9:1 (green) and 2.3:1 (orange), which
-// is fine behind an icon but not for text. Use these anywhere the color lands
-// on type; keep the originals for fills.
-$color-green-text: #567F2D;
-$color-orange-text: #A5641A;
+// The brand colors are kept exactly as they appear in the logo. As type on
+// white they only reach 1.9:1 (green) and 2.3:1 (orange), so wherever they
+// need to carry readable text they are used as a *fill* with dark text on
+// top instead -- 9.0:1 on green, 7.5:1 on orange. Same trick the avatar
+// circles already use, and it shows more of the color, not less.
+$color-brand-fill-text: #1A1A1A;
 
-// Was #CCC (1.6:1). Lightest gray that still clears AA on white.
+// Was #CCC (1.6:1). Lightest gray that still clears AA on white. Not a brand
+// value -- just the "Clients and Partners" label.
 $color-gray-text: #767676;
 

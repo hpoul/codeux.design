@@ -79,6 +79,16 @@
     .info-tags {
       font-weight: bold;
       font-size: 13px;
+
+      // Brand color as a fill rather than as 13px type: the hue stays exactly
+      // as it is in the logo, and the label on top clears 7:1 instead of 2:1.
+      .tag {
+        display: inline-block;
+        border-radius: 3px;
+        padding: 1px mydip(6);
+        margin: 0 mydip(4) mydip(4) 0;
+        color: $color-brand-fill-text;
+      }
     }
 
     .portfolio-project-info-code, .portfolio-project-info-ux {
@@ -93,16 +103,16 @@
     .portfolio-project-info-code {
       background-image: url('#{$imageBaseDir}/avatar/code.svg');
 
-      .info-tags {
-        color: $color-green-text;
+      .info-tags .tag {
+        background: $color-green;
       }
     }
 
     .portfolio-project-info-ux {
       background-image: url('#{$imageBaseDir}/avatar/ux.svg');
 
-      .info-tags {
-        color: $color-orange-text;
+      .info-tags .tag {
+        background: $color-orange;
       }
     }
   }

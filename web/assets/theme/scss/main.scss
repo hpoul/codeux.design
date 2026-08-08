@@ -37,9 +37,17 @@ body {
 }
 
 a {
-  text-decoration: none;
+  // Brand green, underlined. At 1.9:1 the color alone cannot be what marks a
+  // link, so the underline carries that job (WCAG 1.4.1) rather than the hue.
+  text-decoration: underline;
+  text-underline-offset: 2px;
   font-weight: bold;
-  color: $color-green-text;
+  color: $color-green;
+}
+
+// These have their own affordance already; the underline would just be noise.
+.navbar-item, .button, .cta {
+  text-decoration: none;
 }
 
 .ux-landingpage {
@@ -133,10 +141,10 @@ a {
   }
 
   &.code strong, &.code h2 {
-    color: $color-orange-text;
+    color: $color-orange;
   }
   &.ux strong, &.ux h2 {
-    color: $color-green-text;
+    color: $color-green;
   }
 
 }
@@ -153,15 +161,15 @@ a {
   }
 
   .cta {
-    /* button bg: white label on it needs 4.5:1, brand green only gives 1.9:1 */
-    background: $color-green-text;
+    /* brand green fill; white on it is 1.9:1, dark text on it is 9.0:1 */
+    background: $color-green;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
     border-radius: 2px;
     /* MAKE MY PROJECT SUCC: */
     font-size: 19px;
     font-weight: bold;
     text-transform: uppercase;
-    color: #FFFFFF;
+    color: $color-brand-fill-text;
     padding: 8px 32px;
   }
 }
