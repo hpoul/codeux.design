@@ -71,4 +71,18 @@ application {
     // Define the main class for the application
     // mainClassName was removed in Gradle 8.
     mainClass.set("com.dc2f.starter.AppKt")
+
+    // JDK 16 turned strong encapsulation on by default, so commons-lang3's
+    // ReflectionToStringBuilder reaching into java.util.Optional now throws
+    // InaccessibleObjectException instead of warning. It is swallowed inside
+    // TRACE logging, so nothing breaks -- it just fills `serve` output with
+    // "Log message invocation failed".
+    //
+    // Note the "=" form: each list entry becomes one argv element, so
+    // "--add-opens java.base/java.util=ALL-UNNAMED" would reach the JVM as a
+    // single token with a space in it and fail to parse.
+    applicationDefaultJvmArgs = listOf(
+        "--add-opens=java.base/java.lang=ALL-UNNAMED",
+        "--add-opens=java.base/java.util=ALL-UNNAMED"
+    )
 }
