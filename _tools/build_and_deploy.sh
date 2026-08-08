@@ -31,5 +31,11 @@ echo
 echo "purge cloudflare cachedisabled"
 ./_tools/purge_cloudflare_cache.sh
 
-./_tools/gh-pages-deploy.sh
+# Disabled: the gh-pages deploy key is rejected by GitHub
+# ("Permission denied (publickey)"), so this aborted the script under `set -e`
+# *after* the site had already gone live -- making a successful deploy look
+# failed. The branch is a vestigial mirror: it has no CNAME, so it never
+# served codeux.design, and it had drifted years out of date. Re-add once the
+# deploy key is re-established, or drop it for good.
+#./_tools/gh-pages-deploy.sh
 
