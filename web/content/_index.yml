@@ -7,6 +7,8 @@ config:
     - image: 'favicon.ico'
     - image: 'favicon-16x16.png'
     - image: 'favicon-32x32.png'
+  # og:image / twitter:image for pages without an image of their own.
+  socialImage: 'social-card.jpg'
 mainMenu:
   - name: 'Home'
     ref: /
