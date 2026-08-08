@@ -4,8 +4,8 @@ categories:
 - 'Flutter'
 seo:
   title: 'Building Flutter App on Travis️'
-  description: |
-    Crash course in best practices building,
-    bundling and releasing flutter app on a CI
+  description: >-
+    Crash course in best practices for building, bundling and releasing a
+    Flutter app from a CI server, using Travis as the worked example.
 title: 'CI: Building a Flutter App on Travis️'
 teaser: 'train-821500_1920.jpg'

@@ -4,6 +4,8 @@ categories:
 - 'Misc'
 seo:
   title: 'Launching new blog 🎉️'
-  description: "Let's see how long I can keep it up?"
+  description: >-
+    A new blog on Flutter, UX and everything else, built with dc2f, my own
+    static site publisher in Kotlin. Let's see how long I can keep it up?
 title: 'Launching new blog 🎉️'
 teaser: 'teaser.jpg'
