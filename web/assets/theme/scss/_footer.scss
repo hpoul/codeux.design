@@ -34,7 +34,7 @@ footer {
       margin-bottom: mydip(8);
     }
     .developer {
-      color: $color-orange;
+      color: $color-orange-text;
       font-weight: bold;
     }
     .developer:after {
@@ -42,7 +42,7 @@ footer {
       display: block;
     }
     .ux {
-      color: $color-green;
+      color: $color-green-text;
       font-weight: bold;
     }
     .address {

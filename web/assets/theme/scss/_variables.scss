@@ -12,3 +12,15 @@ $color-orange: #E29B4A;
 $color-orange-lighter: #F5EDE4;
 $color-ux: $color-green;
 
+// Same hue and saturation as the brand colors, darkened until they clear
+// WCAG AA (4.5:1) against #FAFAFA -- the darkest background they land on
+// (the footer; portfolio cards are #FCFCFC, everything else is white). The
+// brand colors themselves only reach 1.9:1 (green) and 2.3:1 (orange), which
+// is fine behind an icon but not for text. Use these anywhere the color lands
+// on type; keep the originals for fills.
+$color-green-text: #567F2D;
+$color-orange-text: #A5641A;
+
+// Was #CCC (1.6:1). Lightest gray that still clears AA on white.
+$color-gray-text: #767676;
+

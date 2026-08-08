@@ -13,11 +13,13 @@
     text-align: center;
     font-size: 16px;
     font-weight: bold;
-    color: hsl(0, 0%, 80%);
+    color: $color-gray-text;
     text-transform: uppercase;
   }
   img {
-    filter: grayscale(1) opacity(0.2);
+    // At 0.2 these were effectively invisible, and the hover reveal does not
+    // exist on touch. Still muted, but legible as the social proof they are.
+    filter: grayscale(1) opacity(0.55);
     vertical-align: middle;
 
     &:hover {

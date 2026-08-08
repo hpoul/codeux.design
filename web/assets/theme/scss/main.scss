@@ -39,7 +39,7 @@ body {
 a {
   text-decoration: none;
   font-weight: bold;
-  color: $color-green;
+  color: $color-green-text;
 }
 
 .ux-landingpage {
@@ -133,10 +133,10 @@ a {
   }
 
   &.code strong, &.code h2 {
-    color: $color-orange;
+    color: $color-orange-text;
   }
   &.ux strong, &.ux h2 {
-    color: $color-green;
+    color: $color-green-text;
   }
 
 }
@@ -153,8 +153,8 @@ a {
   }
 
   .cta {
-    /* button bg: */
-    background: #97C965;
+    /* button bg: white label on it needs 4.5:1, brand green only gives 1.9:1 */
+    background: $color-green-text;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
     border-radius: 2px;
     /* MAKE MY PROJECT SUCC: */
