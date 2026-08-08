@@ -8,27 +8,26 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
-    kotlin("jvm") version "1.9.25"
-    id("io.ratpack.ratpack-java") version "1.8.0"
+    kotlin("jvm") version "2.4.10"
+    // io.ratpack.ratpack-java removed: every release of it calls the `compile`
+    // configuration, which Gradle dropped in 7.0. This project never used
+    // ratpack directly -- it arrives transitively via dc2f-edit-api, which now
+    // declares ratpack-core itself.
 
     // Apply the application plugin to add support for building a CLI application.
     application
 }
 
-
-if (gradle.startParameter.isContinuous) {
-    tasks.named<ratpack.gradle.continuous.RatpackContinuousRun>("run") {
-        flattenClassloaders = true
-    }
-}
+// The RatpackContinuousRun block that lived here went with the plugin. It only
+// set flattenClassloaders for `gradle -t run`, i.e. `dc2f.sh serve`. The server
+// still watches web/content itself, so content edits reload as before; a change
+// to Kotlin sources now needs a restart.
 
 repositories {
-    // Use jcenter for resolving dependencies.
-    // You can declare any Maven/Ivy/file repository here.
+    // jcenter() dropped: shut down in 2021 and removed in Gradle 9.
     mavenCentral()
     maven("https://jitpack.io")
     maven("https://oss.sonatype.org/content/groups/public/")
-    jcenter()
 }
 
 val dc2fVersion = "0.2.3-SNAPSHOT"
@@ -36,9 +35,18 @@ val dc2fVersion = "0.2.3-SNAPSHOT"
 tasks.withType<KotlinCompile> {
     // sourceCompatibility dropped: KotlinCompile stopped extending AbstractCompile
     // in Kotlin 1.9, and it was a no-op here regardless (no Java sources).
-    kotlinOptions.jvmTarget = "1.8"
-    // "enable" was removed in Kotlin 1.5; "all" is the closest equivalent.
-    kotlinOptions.freeCompilerArgs = listOf("-Xjvm-default=all")
+    // kotlinOptions was removed in Kotlin 2.2; compilerOptions replaces it, and
+    // -Xjvm-default became -jvm-default ("no-compatibility" == the old "all").
+    compilerOptions {
+        freeCompilerArgs.add("-jvm-default=no-compatibility")
+    }
+}
+
+// Pins both the Java and Kotlin targets together. Setting only
+// compilerOptions.jvmTarget lets compileJava follow whatever JDK is running and
+// Gradle then rejects the mismatch. Gradle 9 requires JDK 17 to run anyway.
+kotlin {
+    jvmToolchain(17)
 }
 
 dependencies {
@@ -61,5 +69,6 @@ dependencies {
 
 application {
     // Define the main class for the application
-    mainClassName = "com.dc2f.starter.AppKt"
+    // mainClassName was removed in Gradle 8.
+    mainClass.set("com.dc2f.starter.AppKt")
 }
