@@ -8,10 +8,10 @@ intro: |
 
 codeTags: ['iPad', 'iPhone', 'Android', 'Web', 'Desktop']
 code: |
-  Cross Platform development with HTML5 and JavaScript.
-  Embedded in native iOS and Android Apps developed in Objective C and Java.
+  Cross-platform development with HTML5 and JavaScript.
+  Embedded in native iOS and Android apps developed in Objective-C and Java.
 
 uxTags: ['Mockups', 'Prototype']
 ux: |
-  Mockups and fast Prototyping for new Training system based on
-  Spaced Repetition Learning.
+  Mockups and fast prototyping for a new training system based on
+  spaced repetition learning.

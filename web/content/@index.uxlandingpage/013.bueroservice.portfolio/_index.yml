@@ -4,8 +4,8 @@ subTitle: 'Benefit Büroservice GmbH'
 intro: |
   Using this app you can easily forward incoming calls to your personal
   assistant who will take your call in the name of your company. They
-  will respond the way as you have configured in the app. Responses
-  could include out of office, meetings, holidays, etc. You will later
+  will respond the way you have configured in the app. Responses
+  could include out-of-office, meetings, holidays, etc. You will later
   be notified by your assistant about missed calls.
 
 codeTags: ['iPhone', 'Android']
@@ -16,5 +16,5 @@ code: |
 
 uxTags: ['Mockups', 'Prototype']
 ux: |
-  Created all Mockups and Click-through prototype for the Android
+  Created all mockups and a click-through prototype for the Android
   and iOS version prior to development.

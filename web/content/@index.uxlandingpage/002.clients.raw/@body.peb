@@ -11,7 +11,7 @@
 
 <div class="competence-field ux">
     <div class="info-column">
-        With a passion for <strong>UX, UI and Product Design</strong>. Proficient in design tools, interactive Prototyping and iterative product development.
+        With a passion for <strong>UX, UI and Product Design</strong>. Proficient in design tools, interactive prototyping and iterative product development.
     </div>
     <div class="avatar-column">
         <img src="{{ render(content=rootNode.embed.figures.avatarUx.image.hrefRenderable) }}" alt="User Experience" width="84" height="83" />
@@ -33,11 +33,12 @@
         <h4>Clients and Partners</h4>
     </div>
     <div class="landing-clients-list">
-        <a href="http://t-mobile.at/" target="_blank" rel="noopener">{{ render(content=node.embed.figures.telekom) }}</a>
-        <a href="https://www.benefit-bueroservice.at/" target="_blank" rel="noopener">{{ render(content=node.embed.figures.bueroservice) }}</a>
-        <a href="http://tapo-it.at/" target="_blank" rel="noopener">{{ render(content=node.embed.figures.tapoIt) }}</a>
-        <a href="http://www.oeamtc.at/" target="_blank" rel="noopener">{{ render(content=node.embed.figures.oeamtc) }}</a>
-        <a href="https://www.elsevier.de/" target="_blank" rel="noopener">{{ render(content=node.embed.figures.elsevier) }}</a>
+        <a href="https://www.magenta.at/" target="_blank" rel="noopener">{{ render(content=node.embed.figures.telekom) }}</a>
+        <a href="https://www.benefit-bueroservice.com/" target="_blank" rel="noopener">{{ render(content=node.embed.figures.bueroservice) }}</a>
+        {# tapo-it.at no longer resolves, so the logo stays but the link is gone. #}
+        {{ render(content=node.embed.figures.tapoIt) }}
+        <a href="https://www.oeamtc.at/" target="_blank" rel="noopener">{{ render(content=node.embed.figures.oeamtc) }}</a>
+        <a href="https://www.elsevier.com/de-de" target="_blank" rel="noopener">{{ render(content=node.embed.figures.elsevier) }}</a>
         <a href="https://www.austrianapps.com/" target="_blank" rel="noopener">{{ render(content=node.embed.figures.austrianapps) }}</a>
     </div>
 </div>

@@ -19,7 +19,7 @@ footerMenu:
       - name: 'Home'
         ref: '/'
       - name: 'Blog'
-        ref: '/'
+        ref: '/articles'
   - name: 'Follow'
     children:
       - name: 'Facebook'
@@ -36,12 +36,3 @@ embed:
       image: ux.svg
 headInject: |
   <link rel="alternate" type="application/rss+xml" title="Newsfeed - codeux.design/articles"  href="https://codeux.design/articles/feed-rss.xml" />
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-91100035-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-91100035-1');
-  </script>

@@ -9,11 +9,11 @@ intro: |
 
 codeTags: ['iPad', 'iPhone', 'Android']
 code: |
-  Development in Objective C for iOS with local Storage,
-  in app purchases, social sign in with a feature equivalent app in Android
-  with Java.
+  Development in Objective-C for iOS with local storage,
+  in-app purchases and social sign-in, with a feature-equivalent app on
+  Android in Java.
 
 uxTags: ['Mockups', 'Prototype']
 ux: |
-  Mockups and fast Prototyping for new Training system
-  based on Spaced Repetition Learning.
+  Mockups and fast prototyping for a new training system
+  based on spaced repetition learning.
