@@ -13,7 +13,14 @@ DC2F_ENV=production ./dc2f.sh build
 #
 #cat _tools/_htaccess_append >> public/.htaccess
 
-./_tools/_deploy_web_sphene_net.sh
+# Disabled: this published to web.sphene.net:public_html/newpage.codeux.design/,
+# which is the *staging* host from the 2019 dc2f rewrite (vhost symlinks date
+# from Oct 2019, days after the first blog post). codeux.design has never been
+# served from it -- that is the docker-host target below, behind Cloudflare.
+# It served newpage.codeux.design: a byte-identical public duplicate on an
+# unproxied nginx/1.8.1, and the only copy holding hand-placed files
+# (hue-poc/, oeamtc/test.txt) that --delete here would have destroyed.
+#./_tools/_deploy_web_sphene_net.sh
 
 rsync --progress -a --delete public/ docker-host.tapo.at:dev/web.poul.at/data/sites/newpage.codeux.design/
 
