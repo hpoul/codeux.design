@@ -8,7 +8,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
-    kotlin("jvm") version "1.4.0"
+    kotlin("jvm") version "1.9.25"
     id("io.ratpack.ratpack-java") version "1.8.0"
 
     // Apply the application plugin to add support for building a CLI application.
@@ -34,9 +34,11 @@ repositories {
 val dc2fVersion = "0.2.3-SNAPSHOT"
 
 tasks.withType<KotlinCompile> {
-    sourceCompatibility = "1.8"
+    // sourceCompatibility dropped: KotlinCompile stopped extending AbstractCompile
+    // in Kotlin 1.9, and it was a no-op here regardless (no Java sources).
     kotlinOptions.jvmTarget = "1.8"
-    kotlinOptions.freeCompilerArgs = listOf("-Xjvm-default=enable")
+    // "enable" was removed in Kotlin 1.5; "all" is the closest equivalent.
+    kotlinOptions.freeCompilerArgs = listOf("-Xjvm-default=all")
 }
 
 dependencies {
