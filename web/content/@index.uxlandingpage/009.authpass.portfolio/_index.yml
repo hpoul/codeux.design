@@ -1,0 +1,21 @@
+screenshot: 'authpass-platform-composition.png'
+title: 'AuthPass'
+subTitle: 'Open source password manager'
+link: https://authpass.app/
+intro: |
+  Free and open source password manager for Android, iOS, macOS, Linux and
+  Windows, compatible with the KeePass file format. Published on the App
+  Store, Google Play and the Microsoft Store.
+
+  <https://authpass.app/>
+
+codeTags: ['Flutter', 'Dart', 'iOS', 'Android', 'Desktop', 'Web']
+code: |
+  A single Flutter codebase across mobile and desktop, with native integrations
+  for biometric unlock, autofill and the platform keychains. Includes kdbx.dart,
+  the KeePass format implementation written for it and released separately.
+
+uxTags: ['Product', 'Prototype']
+ux: |
+  Product design and interaction prototyping for a password manager that has to
+  stay recognisable across five platforms without feeling foreign on any of them.

@@ -1,7 +1,7 @@
 
 <div class="competence-field code">
     <div class="info-column">
-        I am a full stack <strong>mobile and web developer</strong> with experience developing iOS and Android applications as well as web apps.
+        I am a <strong>Flutter and mobile app developer</strong>, shipping apps across iOS, Android and desktop from a single codebase &mdash; with a full stack background in native mobile, backend and web.
     </div>
     <div class="avatar-column">
         <img src="{{ render(content=rootNode.embed.figures.avatarCode.image.hrefRenderable) }}" alt="Code/Development" width="84" height="83" />
