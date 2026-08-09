@@ -9,15 +9,19 @@ cd $dir/..
 
 source _tools/secrets/_purgecache_secrets.sh
 
-# allsites.json lists pages only. sitemap.xml is regenerated on every build and
-# was never purged, so Cloudflare served a stale copy for up to max-age (48h)
-# and Google kept reading outdated <lastmod> values -- the very signal that
-# replaced the retired ping endpoint. Origin is derived from the first page URL
-# rather than hardcoded, so this stays reusable across sites.
+# allsites.json lists pages only, but the build also emits feeds. Both were
+# regenerated on every build and never purged, so Cloudflare served stale copies
+# for up to max-age (48h): Google kept reading outdated <lastmod> values -- the
+# very signal that replaced the retired ping endpoint -- and RSS readers kept
+# getting a feed that predated the newest article. Origin is derived from the
+# first page URL rather than hardcoded, so this stays reusable across sites.
 data=$(cat public/allsites.json | jq '
   [.pages[].url] as $pages
   | ($pages[0] | split("/")[0:3] | join("/")) as $origin
-  | {files: ($pages + ["\($origin)/sitemap.xml"])}
+  | {files: ($pages + [
+      "\($origin)/sitemap.xml",
+      "\($origin)/articles/feed-rss.xml"
+    ])}
 ')
 
 
