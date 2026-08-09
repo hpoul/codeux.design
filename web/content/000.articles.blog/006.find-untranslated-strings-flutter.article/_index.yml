@@ -1,0 +1,16 @@
+author: 'Herbert Poul'
+date: '2024-09-24 17:41'
+categories:
+- 'Flutter'
+seo:
+  title: 'Find untranslated strings in your Flutter app'
+  description: >-
+    Localization slips one pull request at a time. How to catch hardcoded
+    string literals in Dart automatically, in your IDE and in CI, without
+    drowning in false positives.
+title: 'Find untranslated strings in your Flutter app'
+teaser: 'teaser-code.png'
+# The teaser doubles as the hero background, where it is tinted and cropped --
+# the code card is unreadable there, but it is exactly what should show up when
+# the article is shared, so it goes in as the main image instead.
+mainImageOverride: 'string-literal-finder.png'
