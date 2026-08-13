@@ -9,6 +9,10 @@ config:
     - image: 'favicon-32x32.png'
   # og:image / twitter:image for pages without an image of their own.
   socialImage: 'social-card.jpg'
+  # Teasers here are photography at or near 3:2, which is just under the 1.5
+  # the large social card needs -- crop to the card's 1.91:1 rather than let
+  # the article silently share as a thumbnail.
+  socialImageCrop: true
 mainMenu:
   - name: 'Home'
     ref: /
