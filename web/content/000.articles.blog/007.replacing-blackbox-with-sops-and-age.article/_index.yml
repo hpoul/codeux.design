@@ -1,0 +1,13 @@
+author: 'Herbert Poul'
+date: '2026-08-13 17:41'
+categories:
+- 'Flutter'
+slug: 'replacing-blackbox-with-sops-and-age'
+seo:
+  title: 'Replacing Blackbox with sops and age'
+  description: >-
+    Moving a Flutter release pipeline off Blackbox and fastlane match:
+    twenty-two encrypted files become one sops file, and CI goes down to a
+    single age key.
+title: 'Replacing Blackbox with sops and age'
+teaser: 'key-board.jpg'

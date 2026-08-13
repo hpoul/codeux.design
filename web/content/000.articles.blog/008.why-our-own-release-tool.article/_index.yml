@@ -1,0 +1,13 @@
+author: 'Herbert Poul'
+date: '2026-08-16 17:41'
+categories:
+- 'Flutter'
+slug: 'why-our-own-release-tool'
+seo:
+  title: 'Why I ship with my own release tool'
+  description: >-
+    fastlane, Blackbox, plain sops or a hosted secret manager - what each one
+    actually leaves you holding, and the design decisions behind shipping a
+    Flutter app with a small Dart CLI instead.
+title: 'Why I ship with my own release tool'
+teaser: 'workshop-jig.jpg'
